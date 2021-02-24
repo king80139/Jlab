@@ -1,4 +1,4 @@
-def Read_Arg_(arguement):  # Backbone Dictionary 스프레드 시트의 ProjectLibrary(recent)시트를 기반으로,
+def Read_Arg_(arguement, isind=0):  # Backbone Dictionary 스프레드 시트의 ProjectLibrary(recent)시트를 기반으로,
     # argument에 들어갈 명령어의 참조파일, input파일, output파일을 리턴하는 함수입니다.
 
     Lib = Read_Sheet_('ProjectLibrary(recent)')  # worksheet를 pandas DataFrame으로 변환해줍니다.
@@ -7,7 +7,9 @@ def Read_Arg_(arguement):  # Backbone Dictionary 스프레드 시트의 ProjectL
         Lib["*함수명/ parameter이름"] == "*" + arguement, ["Reference File (Information)", "Input File/Information",
                                                       "Output file", "Action Status"]]
     # 원하는 함수가 쓰여있는 행을 찾고, 이 행에서 참조파일, input 파일, output 파일을 가져옵니다.
-    target_row = target_row[target_row["Action Status"] > 0]  # Action Status 고려하는 부분
+    if isind==0:
+        target_row = target_row[target_row["Action Status"] > 0]  # Action Status 고려하는 부분
+    else:pass
     if len(target_row) == 0:
         print("실행가능한 함수가 없습니다. Backbone Dictionary의 Action Status를 확인하십시오. 에러메세지가 발생합니다.")
         return None
@@ -18,6 +20,21 @@ def Read_Arg_(arguement):  # Backbone Dictionary 스프레드 시트의 ProjectL
                                            target_row[target_row.columns[2]].values[0]
 
         return [refFile_info, Input_info, Output]  # 참조파일, input 파일, output 파일을 차례로 리턴해줍니다.
+
+def option_finder(arg):
+    sht = Read_Sheet_("ProjectLibrary(recent)")
+    underrow=sht.shift(-1)[
+        sht["*함수명/ parameter이름"]==f"*{arg}"].applymap(
+            lambda x: None if x=="" else x
+            ).dropna(axis=1).values[0]
+    if underrow[0] == "option":
+        option = dict()
+        for i,o in enumerate(underrow[1:]):
+            option[f"option_{i+1}"] = o
+        return option
+    else :
+        print("no option")
+        pass
 
 
 class OS:
@@ -69,7 +86,13 @@ def import_dataframe(input_name):
         dataframe = pd.read_pickle(input_name)
         return dataframe
     else:
-        return input_name
+        if type(input_name) == dict:
+            return pd.DataFrame(input_name)
+        elif type(input_name) == pd.core.frame.DataFrame:
+            return input_name
+        else:
+            print("Not supported data type")
+
 
 
 def export_dataframe(dataframe, output_name):
@@ -108,4 +131,4 @@ def export_dataframe(dataframe, output_name):
         pass
 
 
-__all__ = ['OS', 'Read_Arg_', 'Read_Sheet_', 'import_dataframe', 'export_dataframe']
+__all__ = ['OS', 'Read_Arg_', 'Read_Sheet_', 'option_finder', 'import_dataframe', 'export_dataframe']

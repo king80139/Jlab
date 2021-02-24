@@ -171,7 +171,7 @@ def Delete_StandardStopwords(input_directory = ""):  # 1차 불용어 처리 (�
 def Replace_Texts_in_Messages(input_directory = ""):  # 1차 Lemmatization 함수
     # (지금은 "JDic_Lemmatization(일반lemma사전)"의 양이 적어 이렇게 가지만,
     # 양이 많아진다면 2차 Lemmatization 함수처럼 수정해야 합니다.)
-    import os, re
+    import os
     from tqdm import tqdm
     from .utils import Read_Arg_, Read_Sheet_, import_dataframe, export_dataframe
     from flashtext import KeywordProcessor
@@ -398,7 +398,7 @@ def Frequency_Analysis(text_file=None):
         text = import_dataframe(input_)
     else:
         for_cooc = 1
-        ref, _, _ = Read_Arg_("Frequency_Analysis")
+        ref, _, _ = Read_Arg_("Frequency_Analysis", isind=1)
         Frequency_Gap = int(ref) / 100
         text = import_dataframe(text_file)
 
@@ -471,7 +471,7 @@ def make_cotable(freq_tag, mes_tbl):
     import re
 
     Cooc_Table = pd.DataFrame(columns=freq_tag)
-    for tag in tqdm(freq_tag):
+    for tag in tqdm(freq_tag, desc="calculating co-occurrence"):
         tag_count = []
         Message_including_tag = list(filter(lambda x: tag in str(x), list(mes_tbl.contents)))
 
@@ -489,15 +489,18 @@ def make_cotable(freq_tag, mes_tbl):
 
 ########################################################################################################################
 
-def cooc_table(input_directory=""):
-    import os
+def cooc_table(text_file=None):
     from .utils import Read_Arg_, import_dataframe, export_dataframe
+    from tqdm import tqdm
 
-    # 공빈도 테이블을 만드는 코드 블럭
-    ref, input_, output_ = Read_Arg_("cooc_table")
-    input_name = os.path.join(input_directory, input_)
-    Message_Df = import_dataframe(input_name)
-    Freq_df = Frequency_Analysis(text_file=input_name)  # 검색어 포함 할 때
+    if text_file is None:
+        ind = 1 # 독립적으로 쓰이는 경우, Backbone사용
+        ref, input_, output_ = Read_Arg_("cooc_table")
+        Message_Df = import_dataframe(input_)
+    else:
+        ind = 0 # 다른 함수 내에서 사용될 경우
+        Message_Df = import_dataframe(text_file)
+    Freq_df = Frequency_Analysis(text_file=Message_Df)  # 검색어 포함 할 때
     Freq_100 = Freq_df[Freq_df["count"] >= Freq_df["count"].max() * 0.01]
     Freq_100_tag = list(Freq_100.tag)
 
@@ -533,8 +536,38 @@ def cooc_table(input_directory=""):
         CoTable_stacked["cooccurrence_count"] >= CoTable_stacked["cooccurrence_count"].max() * 0.05]
     CoTable_stacked = CoTable_stacked.sort_values(by='cooccurrence_count', ascending=False).reset_index(drop=True)
 
-    output_name = os.path.join(input_directory, output_)
-    export_dataframe(CoTable_stacked, output_name)
+    keyword_dict = dict()
+    for kw in tqdm(set(CoTable_stacked["tag_1"]) | set(CoTable_stacked["tag_2"])):
+        keyword_dict[kw] = {
+            "appearance": len(Message_Df[Message_Df["contents"].str.contains(kw)])
+        }
+
+    CoTable_stacked["W_1^n"] = CoTable_stacked["tag_1"].apply(
+        lambda row: Freq_100.loc[Freq_100["tag"] == row, "count"].values[0])
+    CoTable_stacked["W_2^n"] = CoTable_stacked["tag_2"].apply(
+        lambda row: Freq_100.loc[Freq_100["tag"] == row, "count"].values[0])
+    CoTable_stacked["W_1^m"] = CoTable_stacked["tag_1"].apply(lambda row: keyword_dict[row]["appearance"])
+    CoTable_stacked["W_2^m"] = CoTable_stacked["tag_2"].apply(lambda row: keyword_dict[row]["appearance"])
+    CoTable_stacked["W_(1|2)^m"] = CoTable_stacked["cooccurrence_count"]
+    CoTable_stacked["W_(2|1)^m"] = CoTable_stacked["cooccurrence_count"]
+    CoTable_stacked["W_(1and2)^m"] = CoTable_stacked["cooccurrence_count"]
+    CoTable_stacked["W_(1or2)^m"] = CoTable_stacked["W_1^m"]+CoTable_stacked["W_2^m"]-CoTable_stacked["cooccurrence_count"]
+    CoTable_stacked["W_1^n%"] = CoTable_stacked["W_1^n"] / Freq_100["count"].max()
+    CoTable_stacked["W_2^n%"] = CoTable_stacked["W_2^n"] / Freq_100["count"].max()
+    CoTable_stacked["W_1^m%"] = CoTable_stacked["W_1^m"] / len(Message_Df)
+    CoTable_stacked["W_2^m%"] = CoTable_stacked["W_2^m"] / len(Message_Df)
+    CoTable_stacked["W_(1|2)^m%"] = CoTable_stacked["cooccurrence_count"] / CoTable_stacked["W_2^m%"]
+    CoTable_stacked["W_(2|1)^m%"] = CoTable_stacked["cooccurrence_count"] / CoTable_stacked["W_1^m%"]
+    CoTable_stacked["W_(1and2)^m%"] = CoTable_stacked["W_(1and2)^m"] / len(Message_Df)
+    CoTable_stacked["W_(1or2)^m%"] =  CoTable_stacked["W_(1or2)^m"] / len(Message_Df)
+    CoTable_stacked["Fit(1|2)"] = CoTable_stacked["W_(1|2)^m%"] / CoTable_stacked["W_(2|1)^m%"]
+    CoTable_stacked["pair"] = CoTable_stacked[["tag_1", "tag_2"]].apply(lambda row: "-".join(row), axis=1)
+
+    if ind == 1:
+        export_dataframe(CoTable_stacked, output_)
+    else:
+        pass
+    #output_name = os.path.join(input_directory, output_)
 
     return CoTable_stacked
 
@@ -551,8 +584,3 @@ __all__ = {'Delete_Messages',
            'make_cotable',
            'cooc_table'
            }
-
-
-
-
-
