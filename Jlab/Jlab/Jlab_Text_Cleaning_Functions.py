@@ -571,9 +571,47 @@ def cooc_table(text_file=None):
 
     return CoTable_stacked
 
+
+def sequential_run():
+    from Jlab.utils import Read_Sheet_
+    from openpyxl import load_workbook
+
+    wb = load_workbook(filename="JlabMiner library Backbone Dictionary.xlsx")
+    ws = wb.get_sheet_by_name("ProjectLibrary(recent)")
+    sht = Read_Sheet_("ProjectLibrary(recent)")
+    sht_ = sht.copy()
+    sht_ = sht_[
+               ["*함수명/ parameter이름", "Action Status"]
+           ][5:].applymap(lambda cell: None if cell == "" else cell).dropna()
+    sht_ = sht_[sht_["Action Status"] > 0].sort_values(by="Action Status", ascending=True)
+    seq = ["".join([i.replace("*", ""), "()"]) for i in sht_.to_dict(orient="list")["*함수명/ parameter이름"]]
+    action_stat = [actst for actst in sht_.to_dict(orient="list")["Action Status"]]
+    last_func = len(seq)
+    for i, func in enumerate(seq):
+        try:
+            print(f"execute {func}...")
+            res = eval(func)
+            xl_idx = sht[(sht["*함수명/ parameter이름"] == "".join(["*", func.replace("()", "")])) & (
+                        sht["Action Status"] == action_stat[i])].index[0] + 2
+            xl_col = list(sht.columns).index("Action Status") + 1
+            ws.cell(row=xl_idx, column=xl_col).value = -1
+            wb.save("JlabMiner library Backbone Dictionary.xlsx")
+            if i + 1 == last_func:
+                return res
+            else:
+                pass
+        except Exception as e:
+            if i + 1 == 1:
+                print(f"{seq[i]} raised a some kind of error.")
+
+            else:
+                print(f"processed up to {seq[i - 1]}, but {seq[i]} raised a some kind of error.")
+            print(e)
+            return res
+
 ########################################################################################################################
 
-__all__ = {'Delete_Messages',
+__all__ = ['Delete_Messages',
            'Delete_Overlapped_Messages',
            'Delete_Characters',
            'Delete_Characters_by_Dic',
@@ -582,5 +620,7 @@ __all__ = {'Delete_Messages',
            'Replace_Texts_by_Dic',
            'Frequency_Analysis',
            'make_cotable',
-           'cooc_table'
-           }
+           'cooc_table',
+           'sequential_run'
+           ]
+

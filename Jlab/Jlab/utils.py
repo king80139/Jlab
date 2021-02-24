@@ -8,7 +8,9 @@ def Read_Arg_(arguement, isind=0):  # Backbone Dictionary 스프레드 시트의
                                                       "Output file", "Action Status"]]
     # 원하는 함수가 쓰여있는 행을 찾고, 이 행에서 참조파일, input 파일, output 파일을 가져옵니다.
     if isind==0:
-        target_row = target_row[target_row["Action Status"] > 0]  # Action Status 고려하는 부분
+        target_row = target_row[target_row["Action Status"]!=""]
+        target_row = target_row[target_row["Action Status"] > 0]
+        target_row = target_row[target_row["Action Status"] == target_row["Action Status"].min()]
     else:pass
     if len(target_row) == 0:
         print("실행가능한 함수가 없습니다. Backbone Dictionary의 Action Status를 확인하십시오. 에러메세지가 발생합니다.")
@@ -131,4 +133,4 @@ def export_dataframe(dataframe, output_name):
         pass
 
 
-__all__ = ['OS', 'Read_Arg_', 'Read_Sheet_', 'option_finder', 'import_dataframe', 'export_dataframe']
+__all__ = ['OS', 'Read_Arg_', 'Read_Sheet_', 'option_finder' ,'import_dataframe', 'export_dataframe']
