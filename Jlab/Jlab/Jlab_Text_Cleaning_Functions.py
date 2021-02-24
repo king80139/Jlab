@@ -473,10 +473,15 @@ def make_cotable(freq_tag, mes_tbl):
     Cooc_Table = pd.DataFrame(columns=freq_tag)
     for tag in tqdm(freq_tag, desc="calculating co-occurrence"):
         tag_count = []
-        Message_including_tag = list(filter(lambda x: tag in str(x), list(mes_tbl.contents)))
+        Message_including_tag = list(filter(lambda x: "".join([" ",tag," "]) in str(x), list(mes_tbl.contents)))
+        print(tag)
+        print(mes_tbl[mes_tbl["contents"].str.contains(tag)].iloc[0:5])
+        print(Message_including_tag[0:5])
+        print(len(mes_tbl[mes_tbl["contents"].str.contains(tag)]))
+        print(len(Message_including_tag))
 
         for item in freq_tag:
-            tag_finder = re.compile(str(item))
+            tag_finder = re.compile("".join([" ", str(item)," "]))
             tag_count += [len(list(filter(lambda x: len(tag_finder.findall(str(x))) > 0, Message_including_tag)))]
         Cooc_Table.loc[len(Cooc_Table)] = tag_count
 
@@ -485,17 +490,18 @@ def make_cotable(freq_tag, mes_tbl):
     for i in range(len(Cooc_Table)):
         CoTable.loc[i] = [0] * (i + 1) + list(CoTable.loc[i])[i + 1:]
     CoTable.index = Cooc_Table.columns
+    print(CoTable)
     return CoTable
 
 ########################################################################################################################
 
-def cooc_table(text_file=None):
+def Make_Cooccurrence_Table(text_file=None):
     from .utils import Read_Arg_, import_dataframe, export_dataframe
     from tqdm import tqdm
 
     if text_file is None:
         ind = 1 # 독립적으로 쓰이는 경우, Backbone사용
-        ref, input_, output_ = Read_Arg_("cooc_table")
+        ref, input_, output_ = Read_Arg_("Make_Cooccurrence_Table")
         Message_Df = import_dataframe(input_)
     else:
         ind = 0 # 다른 함수 내에서 사용될 경우
@@ -556,8 +562,8 @@ def cooc_table(text_file=None):
     CoTable_stacked["W_2^n%"] = CoTable_stacked["W_2^n"] / Freq_100["count"].max()
     CoTable_stacked["W_1^m%"] = CoTable_stacked["W_1^m"] / len(Message_Df)
     CoTable_stacked["W_2^m%"] = CoTable_stacked["W_2^m"] / len(Message_Df)
-    CoTable_stacked["W_(1|2)^m%"] = CoTable_stacked["cooccurrence_count"] / CoTable_stacked["W_2^m%"]
-    CoTable_stacked["W_(2|1)^m%"] = CoTable_stacked["cooccurrence_count"] / CoTable_stacked["W_1^m%"]
+    CoTable_stacked["W_(1|2)^m%"] = CoTable_stacked["cooccurrence_count"] / CoTable_stacked["W_2^m"]
+    CoTable_stacked["W_(2|1)^m%"] = CoTable_stacked["cooccurrence_count"] / CoTable_stacked["W_1^m"]
     CoTable_stacked["W_(1and2)^m%"] = CoTable_stacked["W_(1and2)^m"] / len(Message_Df)
     CoTable_stacked["W_(1or2)^m%"] =  CoTable_stacked["W_(1or2)^m"] / len(Message_Df)
     CoTable_stacked["Fit(1|2)"] = CoTable_stacked["W_(1|2)^m%"] / CoTable_stacked["W_(2|1)^m%"]
@@ -573,7 +579,7 @@ def cooc_table(text_file=None):
 
 
 def sequential_run():
-    from Jlab.utils import Read_Sheet_
+    from .utils import Read_Sheet_
     from openpyxl import load_workbook
 
     wb = load_workbook(filename="JlabMiner library Backbone Dictionary.xlsx")
@@ -620,7 +626,7 @@ __all__ = ['Delete_Messages',
            'Replace_Texts_by_Dic',
            'Frequency_Analysis',
            'make_cotable',
-           'cooc_table',
+           'Make_Cooccurrence_Table',
            'sequential_run'
            ]
 
