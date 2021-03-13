@@ -23,7 +23,7 @@ def Delete_Messages(input_directory=""):
     input_Message["SPAM"] = input_Message["contents"].progress_apply(SPAM.search)
     input_Message = input_Message[input_Message["SPAM"].isna()].drop(["SPAM"], axis = 'columns')
 
-    input_Message.sort_values(by="date", inplace=True)
+    #input_Message.sort_values(by="date", inplace=True)
     input_Message.reset_index(drop=True, inplace=True)
 
     output_name = os.path.join(input_directory, output_)
@@ -171,7 +171,7 @@ def Delete_StandardStopwords(input_directory = ""):  # 1차 불용어 처리 (�
 def Replace_Texts_in_Messages(input_directory = ""):  # 1차 Lemmatization 함수
     # (지금은 "JDic_Lemmatization(일반lemma사전)"의 양이 적어 이렇게 가지만,
     # 양이 많아진다면 2차 Lemmatization 함수처럼 수정해야 합니다.)
-    import os
+    import os, re
     from tqdm import tqdm
     from .utils import Read_Arg_, Read_Sheet_, import_dataframe, export_dataframe
     from flashtext import KeywordProcessor
@@ -406,8 +406,7 @@ def Frequency_Analysis(text_file=None):
         if item != "":
             # not_language = re.compile('[^ ㄱ-ㅎㅣ가-힣|a-z|A-Z]+')
             # item = re.sub(not_language,"",str(item))
-            item = item.lower()
-            contents.append(item.strip())
+            contents.append(str(item).lower().strip())
 
     contents = []
     tag_contents = []
@@ -474,11 +473,6 @@ def make_cotable(freq_tag, mes_tbl):
     for tag in tqdm(freq_tag, desc="calculating co-occurrence"):
         tag_count = []
         Message_including_tag = list(filter(lambda x: "".join([" ",tag," "]) in str(x), list(mes_tbl.contents)))
-        print(tag)
-        print(mes_tbl[mes_tbl["contents"].str.contains(tag)].iloc[0:5])
-        print(Message_including_tag[0:5])
-        print(len(mes_tbl[mes_tbl["contents"].str.contains(tag)]))
-        print(len(Message_including_tag))
 
         for item in freq_tag:
             tag_finder = re.compile("".join([" ", str(item)," "]))
@@ -507,7 +501,7 @@ def Make_Cooccurrence_Table(text_file=None):
         ind = 0 # 다른 함수 내에서 사용될 경우
         Message_Df = import_dataframe(text_file)
     Freq_df = Frequency_Analysis(text_file=Message_Df)  # 검색어 포함 할 때
-    Freq_100 = Freq_df[Freq_df["count"] >= Freq_df["count"].max() * 0.01]
+    Freq_100 = Freq_df[Freq_df["count"] >= Freq_df["count"].max() * ref]
     Freq_100_tag = list(Freq_100.tag)
 
     CoTable = make_cotable(Freq_100_tag, Message_Df)
@@ -578,43 +572,6 @@ def Make_Cooccurrence_Table(text_file=None):
     return CoTable_stacked
 
 
-def sequential_run():
-    from .utils import Read_Sheet_
-    from openpyxl import load_workbook
-
-    wb = load_workbook(filename="JlabMiner library Backbone Dictionary.xlsx")
-    ws = wb.get_sheet_by_name("ProjectLibrary(recent)")
-    sht = Read_Sheet_("ProjectLibrary(recent)")
-    sht_ = sht.copy()
-    sht_ = sht_[
-               ["*함수명/ parameter이름", "Action Status"]
-           ][5:].applymap(lambda cell: None if cell == "" else cell).dropna()
-    sht_ = sht_[sht_["Action Status"] > 0].sort_values(by="Action Status", ascending=True)
-    seq = ["".join([i.replace("*", ""), "()"]) for i in sht_.to_dict(orient="list")["*함수명/ parameter이름"]]
-    action_stat = [actst for actst in sht_.to_dict(orient="list")["Action Status"]]
-    last_func = len(seq)
-    for i, func in enumerate(seq):
-        try:
-            print(f"execute {func}...")
-            res = eval(func)
-            xl_idx = sht[(sht["*함수명/ parameter이름"] == "".join(["*", func.replace("()", "")])) & (
-                        sht["Action Status"] == action_stat[i])].index[0] + 2
-            xl_col = list(sht.columns).index("Action Status") + 1
-            ws.cell(row=xl_idx, column=xl_col).value = -1
-            wb.save("JlabMiner library Backbone Dictionary.xlsx")
-            if i + 1 == last_func:
-                return res
-            else:
-                pass
-        except Exception as e:
-            if i + 1 == 1:
-                print(f"{seq[i]} raised a some kind of error.")
-
-            else:
-                print(f"processed up to {seq[i - 1]}, but {seq[i]} raised a some kind of error.")
-            print(e)
-            return res
-
 ########################################################################################################################
 
 __all__ = ['Delete_Messages',
@@ -626,7 +583,7 @@ __all__ = ['Delete_Messages',
            'Replace_Texts_by_Dic',
            'Frequency_Analysis',
            'make_cotable',
-           'Make_Cooccurrence_Table',
-           'sequential_run'
+           'Make_Cooccurrence_Table'
            ]
+
 

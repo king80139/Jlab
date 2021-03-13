@@ -45,7 +45,7 @@ class OS:
         if platform.system() == "Darwin" or platform.system() == "Linux":
             encoding = "cp949"
         elif platform.system() == "Windows":
-            encoding = "utf-8"
+            encoding = "utf-8-sig"
         else:
             encoding = "cp949"
         return encoding
@@ -66,10 +66,54 @@ def Read_Sheet_(sheet_name):  # Backbone Dictionary 스프레드 시트를 기�
             worksheet = pd.read_csv(sheet_name, encoding=encoding).fillna("")
         elif os.path.splitext(sheet_name) == ".xlsx":
             worksheet = pd.read_excel(sheet_name).fillna("")
+        elif os.path.splitext(sheet_name) == ".pkl":
+            worksheet = pd.read_pickle(sheet_name).fillna("")
         else:
             raise e
 
     return worksheet
+
+
+def sequential_run():
+    from openpyxl import load_workbook
+    from .Jlab_Text_Cleaning_Functions import Delete_Messages, Delete_Characters, Delete_Characters_by_Dic, Delete_Overlapped_Messages, Delete_StandardStopwords, Replace_Texts_in_Messages, Replace_Texts_by_Dic, Frequency_Analysis, Make_Cooccurrence_Table
+    from .Calculate_BD import Calculate_BD
+    from .Draw_Static_3D_plot_Space import draw_static_3d_plot_space
+    from .plots import draw_snplot, draw_WordCloud
+
+    wb = load_workbook(filename="JlabMiner library Backbone Dictionary.xlsx")
+    ws = wb.get_sheet_by_name("ProjectLibrary(recent)")
+    sht = Read_Sheet_("ProjectLibrary(recent)")
+    sht_ = sht.copy()
+    sht_ = sht_[
+               ["*함수명/ parameter이름", "Action Status"]
+           ][5:].applymap(lambda cell: None if cell == "" else cell).dropna()
+    sht_ = sht_[sht_["Action Status"] > 0].sort_values(by="Action Status", ascending=True)
+    seq = ["".join([i.replace("*", ""), "()"]) for i in sht_.to_dict(orient="list")["*함수명/ parameter이름"]]
+    action_stat = [actst for actst in sht_.to_dict(orient="list")["Action Status"]]
+    last_func = len(seq)
+    for i, func in enumerate(seq):
+        try:
+            print(f"execute {func}...")
+            res = eval(func)
+            xl_idx = sht[(sht["*함수명/ parameter이름"] == "".join(["*", func.replace("()", "")])) & (
+                        sht["Action Status"] == action_stat[i])].index[0] + 2
+            xl_col = list(sht.columns).index("Action Status") + 1
+            ws.cell(row=xl_idx, column=xl_col).value = -1
+            wb.save("JlabMiner library Backbone Dictionary.xlsx")
+            if i + 1 == last_func:
+                return res
+            else:
+                pass
+        except Exception as e:
+            if i + 1 == 1:
+                print(f"{seq[i]} raised a some kind of error.")
+
+            else:
+                print(f"processed up to {seq[i - 1]}, but {seq[i]} raised a some kind of error.")
+            print(e)
+            return res
+
 
 
 def import_dataframe(input_name):
@@ -79,7 +123,10 @@ def import_dataframe(input_name):
     encoding = opsys.encoding()
 
     if ".csv" in input_name:
-        dataframe = pd.read_csv(input_name, encoding=encoding)
+        try:
+            dataframe = pd.read_csv(input_name, encoding='utf-8')
+        except:
+            dataframe = pd.read_csv(input_name, encoding='cp949')
         return dataframe
     elif ".xlsx" in input_name:
         dataframe = pd.read_excel(input_name)
@@ -122,7 +169,7 @@ def export_dataframe(dataframe, output_name):
         output_name = "".join([name, ".csv"])
         export_(dataframe, output_name, encoding)
 
-    elif output_name == "":
+    elif output_name is None:
         output_name = input("결과물 이름이 정해지지 지지 않았습니다. 결과물의 이름을 기입해주십시오(확장자 제외) : ")
         output_name = "".join([output_name, ".csv"])
         export_(dataframe, output_name, encoding)
@@ -133,4 +180,4 @@ def export_dataframe(dataframe, output_name):
         pass
 
 
-__all__ = ['OS', 'Read_Arg_', 'Read_Sheet_', 'option_finder' ,'import_dataframe', 'export_dataframe']
+__all__ = ['OS', 'Read_Arg_', 'Read_Sheet_', 'option_finder' ,'import_dataframe', 'export_dataframe', 'sequential_run']
