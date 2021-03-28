@@ -385,7 +385,7 @@ def Replace_Texts_by_Dic(input_directory = ""):  # 2차 Lemmatization하는 함�
 
 ########################################################################################################################
 
-def Frequency_Analysis(text_file=None):
+def Frequency_Analysis(text_file=None, min_count =500):
     import pandas as pd
     from collections import Counter
     from tqdm import tqdm as bar
@@ -425,7 +425,7 @@ def Frequency_Analysis(text_file=None):
         tag_count.append(dics)
 
     df_tag_count = pd.DataFrame(tag_count)
-    df_tag_count = df_tag_count[df_tag_count["count"] >= 500].sort_values(by="tag").reset_index(drop=True)
+    df_tag_count = df_tag_count[df_tag_count["count"] >= min_count].sort_values(by="tag").reset_index(drop=True)
     iterations = len(df_tag_count)
     row_num = 0
 

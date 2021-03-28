@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="35facf2b-79a7-4daa-a3ad-11d04437c913" name="Default Changelist" comment="delete bps, modify some modules">
-      <change afterPath="$PROJECT_DIR$/../../.idea/github.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="35facf2b-79a7-4daa-a3ad-11d04437c913" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jlab_Text_Cleaning_Functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Jlab_Text_Cleaning_Functions.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="Sukhoon &lt;king80139@gmail.com&gt;" />
         <option value="king" />
         <option value="king80139 &lt;57906236+king80139@users.noreply.github.com&gt;" />
       </list>
@@ -52,6 +59,8 @@
       <workItem from="1615699360200" duration="420000" />
       <workItem from="1615729819695" duration="557000" />
       <workItem from="1616416655590" duration="16000" />
+      <workItem from="1616417077991" duration="850000" />
+      <workItem from="1616941768609" duration="383000" />
     </task>
     <task id="LOCAL-00001" summary="delete bps, modify some modules">
       <created>1615622566193</created>
@@ -60,7 +69,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615622566193</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="delete bps, modify some modules">
+      <created>1616417372879</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1616417372880</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -71,13 +87,13 @@
     <option name="LAST_COMMIT_MESSAGE" value="delete bps, modify some modules" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="301" y="108" key="CommitChangelistDialog2" timestamp="1616416669453">
+    <state x="301" y="108" key="CommitChangelistDialog2" timestamp="1616417372792">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state x="301" y="108" key="CommitChangelistDialog2/0.25.1680.1025@0.25.1680.1025" timestamp="1616416669453" />
-    <state x="440" y="274" key="Vcs.Push.Dialog.v2" timestamp="1615622571909">
+    <state x="301" y="108" key="CommitChangelistDialog2/0.25.1680.1025@0.25.1680.1025" timestamp="1616417372792" />
+    <state x="440" y="274" key="Vcs.Push.Dialog.v2" timestamp="1616417378812">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state x="440" y="274" key="Vcs.Push.Dialog.v2/0.25.1680.1025@0.25.1680.1025" timestamp="1615622571909" />
+    <state x="440" y="274" key="Vcs.Push.Dialog.v2/0.25.1680.1025@0.25.1680.1025" timestamp="1616417378812" />
   </component>
 </project>
