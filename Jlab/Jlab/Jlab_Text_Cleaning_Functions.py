@@ -1,4 +1,4 @@
-def Delete_Messages(input_directory=""):
+def Delete_Messages(username, prname):
     # SPAM 메세지라고 판단할 수 있는 요소를 찾아 데이터 제거하는 함수
     # 기본적인 아이디어는 1차 Lemmatization함수와 같습니다.
     # Read_Sheet를 통해 SPAM사전에 접근한 뒤,
@@ -7,16 +7,16 @@ def Delete_Messages(input_directory=""):
     import os, re
     from tqdm import tqdm
     from .utils import Read_Arg_, Read_Sheet_, import_dataframe, export_dataframe
-
+    input_directory = "/".join([username, prname])  #Non-창민버전
     tqdm.pandas()
 
-    ref, input_, output_ = Read_Arg_("Delete_Messages")
+    ref, input_, output_ = Read_Arg_(username,prname,"Delete_Messages")
 
     input_name = os.path.join(input_directory, input_)
     input_Message = import_dataframe(input_name)
     input_Message = input_Message[input_Message["contents"].notna()]
 
-    SPAM = list(Read_Sheet_(ref).iloc[:, 0])
+    SPAM = list(Read_Sheet_(username,prname,ref).iloc[:, 0])
     SPAM = str(SPAM).replace("[", "").replace("]", "").replace(", ''", "").replace(", ", "|").replace("'", "")
     SPAM = re.compile(SPAM)
 
@@ -33,16 +33,17 @@ def Delete_Messages(input_directory=""):
 
 ########################################################################################################################
 
-def Delete_Overlapped_Messages(input_directory=""):  # 중복메세지를 제거하는 함수입니다.
+def Delete_Overlapped_Messages(username, prname):  # 중복메세지를 제거하는 함수입니다.
     import os
     from tqdm import tqdm
     from .utils import Read_Arg_, import_dataframe, export_dataframe
     tqdm.pandas()
 
-    ref, input_, output_ = Read_Arg_("Delete_Overlapped_Messages")  # Read_Arg를 통해 참조파일, input파일, output파일을 불러옵니다.
+    ref, input_, output_ = Read_Arg_(username,prname,"Delete_Overlapped_Messages")  # Read_Arg를 통해 참조파일, input파일, output파일을 불러옵니다.
     # 이 때 ref는 Overlapped여부를 판가름하는 문자열의 길이,
     # input파일은 메세지 csv파일의 이름,
     # output은 처리 후 내보낼 메세지 csv파일의 이름입니다.
+    input_directory = "/".join([username, prname])  #Non-창민버 전
 
     input_name = os.path.join(input_directory, input_)
     input_Message = import_dataframe(input_name)
@@ -74,18 +75,18 @@ def Delete_Overlapped_Messages(input_directory=""):  # 중복메세지를 제거
 
 ########################################################################################################################
 
-def Delete_StandardStopwords(input_directory = ""):  # 1차 불용어 처리 (불용어 사전을 새로 수정하고 만들어야 합니다.)
+def Delete_StandardStopwords(username, prname):  # 1차 불용어 처리 (불용어 사전을 새로 수정하고 만들어야 합니다.)
     import re, os
     from tqdm import tqdm
     from .utils import Read_Arg_, Read_Sheet_, import_dataframe, export_dataframe
     tqdm.pandas()
-
-    ref, input_, output_ = Read_Arg_("Delete_StandardStopwords")  # Read_Arg를 통해 참조파일, input파일, output파일을 불러옵니다.
+    input_directory = "/".join([username, prname])  # Non-창민버전
+    ref, input_, output_ = Read_Arg_(username,prname,"Delete_StandardStopwords")  # Read_Arg를 통해 참조파일, input파일, output파일을 불러옵니다.
     # 이 때 ref는 "JDic_BizStopwords(경영불용어사전)"시트를,
     # input파일은 메세지 csv파일의 이름,
     # output은 처리 후 내보낼 메세지 csv파일의 이름입니다.
 
-    Clean = Read_Sheet_(ref)  # Clean이라는 변수에 Read_Sheet를 통해
+    Clean = Read_Sheet_(username,prname,ref)  # Clean이라는 변수에 Read_Sheet를 통해
     # "JDic_BizStopwords(경영불용어사전)"시트를 불러옵니다.
     Clean.columns = Clean.iloc[0]
     Clean = Clean[1:]
@@ -168,7 +169,7 @@ def Delete_StandardStopwords(input_directory = ""):  # 1차 불용어 처리 (�
 
 ########################################################################################################################
 
-def Replace_Texts_in_Messages(input_directory = ""):  # 1차 Lemmatization 함수
+def Replace_Texts_in_Messages(username, prname):  # 1차 Lemmatization 함수
     # (지금은 "JDic_Lemmatization(일반lemma사전)"의 양이 적어 이렇게 가지만,
     # 양이 많아진다면 2차 Lemmatization 함수처럼 수정해야 합니다.)
     import os, re
@@ -176,15 +177,15 @@ def Replace_Texts_in_Messages(input_directory = ""):  # 1차 Lemmatization 함�
     from .utils import Read_Arg_, Read_Sheet_, import_dataframe, export_dataframe
     from flashtext import KeywordProcessor
     tqdm.pandas()
-
+    input_directory = "/".join([username, prname])  # Non-창민버전
     kp = KeywordProcessor()
-    ref, input_, output_ = Read_Arg_("Replace_Texts_in_Messages")  # Read_Arg를 통해 참조파일, input파일, output파일을 불러옵니다.
+    ref, input_, output_ = Read_Arg_(username,prname,"Replace_Texts_in_Messages")  # Read_Arg를 통해 참조파일, input파일, output파일을 불러옵니다.
     # 이 때 ref는 "JDic_Lemmatization(일반lemma사전)"시트를,
     # input파일은 메세지 csv파일의 이름,
     # output은 처리 후 내보낼 메세지 csv파일의 이름입니다.
 
     # lemma라는 변수에 reference 시트를 불러오기
-    lemma = Read_Sheet_(ref)  # lemma라는 변수에 Read_Sheet를 통해
+    lemma = Read_Sheet_(username,prname,ref)  # lemma라는 변수에 Read_Sheet를 통해
     # "JDic_Lemmatization(일반lemma사전)"시트를 불러옵니다.
     lemma = lemma.fillna("").to_numpy(dtype=list)
     all_V = list(map(lambda x: [i for i in x if i != ""], lemma))  # all_V라는 변수에 lemma에 있는 데이터들을 전부 가져옵니다.
@@ -226,18 +227,18 @@ def Replace_Texts_in_Messages(input_directory = ""):  # 1차 Lemmatization 함�
 
 ########################################################################################################################
 
-def Delete_Characters(input_directory = ""):  # 1차 불용어 처리 (불용어 사전을 새로 수정하고 만들어야 합니다.)
+def Delete_Characters(username, prname):  # 1차 불용어 처리 (불용어 사전을 새로 수정하고 만들어야 합니다.)
     import re, os
     from tqdm import tqdm
     from .utils import Read_Arg_, Read_Sheet_, import_dataframe, export_dataframe
     tqdm.pandas()
-
-    ref, input_, output_ = Read_Arg_("Delete_Characters")  # Read_Arg를 통해 참조파일, input파일, output파일을 불러옵니다.
+    input_directory = "/".join([username, prname])  # Non-창민버전
+    ref, input_, output_ = Read_Arg_(username,prname,"Delete_Characters")  # Read_Arg를 통해 참조파일, input파일, output파일을 불러옵니다.
     # 이 때 ref는 "Project_Stopwords"시트를,
     # input파일은 메세지 csv파일의 이름,
     # output은 처리 후 내보낼 메세지 csv파일의 이름입니다.
 
-    Clean = Read_Sheet_(ref)  # Clean이라는 변수에 Read_Sheet를 통해
+    Clean = Read_Sheet_(username,prname,ref)  # Clean이라는 변수에 Read_Sheet를 통해
     # "JDic_BizStopwords(경영불용어사전)"시트를 불러옵니다.
     Clean.columns = Clean.iloc[0]
     Clean = Clean[1:]
@@ -295,7 +296,7 @@ def Delete_Characters(input_directory = ""):  # 1차 불용어 처리 (불용어
 
 ########################################################################################################################
 
-def Delete_Characters_by_Dic(input_directory = ""):  # Worksheet에 작업한 내역을 바탕으로 불용어를 처리하는 함수 입니다.
+def Delete_Characters_by_Dic(username, prname):  # Worksheet에 작업한 내역을 바탕으로 불용어를 처리하는 함수 입니다.
 
     # 기본적인 아이디어는 1차 Delete_Characters와 같습니다.
     # Read_Sheet를 통해 Worksheet에 접근해서 Clean_Character 컬럼에 1 표시가 된
@@ -305,13 +306,13 @@ def Delete_Characters_by_Dic(input_directory = ""):  # Worksheet에 작업한 �
     from tqdm import tqdm
     from .utils import Read_Arg_, Read_Sheet_, import_dataframe, export_dataframe
     tqdm.pandas()
-
-    ref, input_, output_ = Read_Arg_("Delete_Characters_by_Dic")  # Read_Arg를 통해 참조파일, input파일, output파일을 불러옵니다.
+    input_directory = "/".join([username, prname])  # Non-창민버전
+    ref, input_, output_ = Read_Arg_(username,prname,"Delete_Characters_by_Dic")  # Read_Arg를 통해 참조파일, input파일, output파일을 불러옵니다.
     # 이 때 ref는 "Text_PreProcessing_Wokrsheet_Korean"시트를,
     # input파일은 메세지 csv파일의 이름,
     # output은 처리 후 내보낼 메세지 csv파일의 이름입니다.
 
-    JDic = Read_Sheet_(ref)[5:]
+    JDic = Read_Sheet_(username,prname,ref)[5:]
     JDic = JDic[~JDic["tag"].duplicated()]
     JDic["unit_length"] = JDic["tag"].apply(lambda x: len(str(x)))
     JDic = JDic.sort_values(by="unit_length", ascending=False)
@@ -335,17 +336,17 @@ def Delete_Characters_by_Dic(input_directory = ""):  # Worksheet에 작업한 �
 
 ########################################################################################################################
 
-def Replace_Texts_by_Dic(input_directory = ""):  # 2차 Lemmatization하는 함수입니다.
+def Replace_Texts_by_Dic(username, prname):  # 2차 Lemmatization하는 함수입니다.
     import os
     from .utils import Read_Arg_, Read_Sheet_, import_dataframe, export_dataframe
     from tqdm import tqdm
     tqdm.pandas()  # 진행상황과 예정 ETA를 알려주는 tqdm 라이브러리 중,
     # apply 메소드에 적용되는 .pandas() 명령문을 실행해줍니다. (apply는 밑에 나옵니다.)
-
-    ref, input_, output_ = Read_Arg_(
+    input_directory = "/".join([username, prname])  # Non-창민버전
+    ref, input_, output_ = Read_Arg_(username,prname,
         "Replace_Texts_by_Dic")  # Read_Arg 명령문을 통해 Jlab Library에 해당 명령문에 필요한 참조파일, 인풋, 아웃풋을 가져옵니다.
 
-    Dls = Read_Sheet_(ref)[5:]
+    Dls = Read_Sheet_(username,prname,ref)[5:]
     Dls = Dls[Dls["Replace_Texts"] != ""]  # Replace_Texts에 뭐라도 써있는 것들만으로 범위를 줄여줍니다.
     Dls = Dls[["tag", "Replace_Texts"]]  # Worksheet 중 tag와 Replace_Texts에만 해당하는 컬럼만으로 줄여줍니다.
     Dls = Dls[~Dls.duplicated()].reset_index(drop=True)  # 중복된 것들을 제거해준 뒤, index를 새로 만들어줍니다.
@@ -385,22 +386,23 @@ def Replace_Texts_by_Dic(input_directory = ""):  # 2차 Lemmatization하는 함�
 
 ########################################################################################################################
 
-def Frequency_Analysis(text_file=None, min_count =500):
+def Frequency_Analysis(username, prname):
     import pandas as pd
     from collections import Counter
     from tqdm import tqdm as bar
     from .utils import Read_Arg_, import_dataframe, export_dataframe
+    input_directory = "/".join([username, prname])  # Non-창민버전
 
-    if text_file is None:
+    if prname is not None:
         for_cooc = 0  # 순수하게 Frequency_Analysis를 해야할 우
         ref, input_, output_ = Read_Arg_("Frequency_Analysis")
         Frequency_Gap = int(ref) / 100
         text = import_dataframe(input_)
-    else:
+    else: # 분석할 textfile을 username에 적는다.
         for_cooc = 1
         ref, _, _ = Read_Arg_("Frequency_Analysis", isind=1)
         Frequency_Gap = int(ref) / 100
-        text = import_dataframe(text_file)
+        text = import_dataframe(username)
 
     def get_contents(item):
         if item != "":
@@ -425,7 +427,7 @@ def Frequency_Analysis(text_file=None, min_count =500):
         tag_count.append(dics)
 
     df_tag_count = pd.DataFrame(tag_count)
-    df_tag_count = df_tag_count[df_tag_count["count"] >= min_count].sort_values(by="tag").reset_index(drop=True)
+    df_tag_count = df_tag_count[df_tag_count["count"] >= 50].sort_values(by="tag").reset_index(drop=True)
     iterations = len(df_tag_count)
     row_num = 0
 
@@ -489,17 +491,20 @@ def make_cotable(freq_tag, mes_tbl):
 
 ########################################################################################################################
 
-def Make_Cooccurrence_Table(text_file=None):
+def Make_Cooccurrence_Table(username, prname):
     from .utils import Read_Arg_, import_dataframe, export_dataframe
     from tqdm import tqdm
 
-    if text_file is None:
+    if prname is not None:
         ind = 1 # 독립적으로 쓰이는 경우, Backbone사용
         ref, input_, output_ = Read_Arg_("Make_Cooccurrence_Table")
         Message_Df = import_dataframe(input_)
+
     else:
-        ind = 0 # 다른 함수 내에서 사용될 경우
-        Message_Df = import_dataframe(text_file)
+        ind = 0 # 다른 함수 내에서 사용될 경우, username에 분석할 text데이터를 넣는다.
+        Message_Df = import_dataframe(username)
+
+
     Freq_df = Frequency_Analysis(text_file=Message_Df)  # 검색어 포함 할 때
     Freq_100 = Freq_df[Freq_df["count"] >= Freq_df["count"].max() * ref]
     Freq_100_tag = list(Freq_100.tag)
