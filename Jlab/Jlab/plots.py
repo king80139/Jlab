@@ -1,4 +1,4 @@
-def draw_WordCloud():
+def draw_WordCloud(username,prname):
     from wordcloud import WordCloud
     import matplotlib.pyplot as plt
     from matplotlib import font_manager

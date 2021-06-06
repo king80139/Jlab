@@ -1,4 +1,4 @@
-def draw_static_3d_plot_space(input_directory=""):
+def draw_static_3d_plot_space(username,prname):
     import pandas as pd
     import os
     import plotly.express as px
@@ -7,6 +7,7 @@ def draw_static_3d_plot_space(input_directory=""):
     pio.renderers.default = "browser"
     from .utils import Read_Arg_, import_dataframe
 
+    input_directory = "/".join([username,prname])
     _, input_, output_ = Read_Arg_("Draw_Static_3D_Plot_Space")
     input_name = os.path.join(input_directory, input_)
     table_for_3dplot = import_dataframe(input_name)

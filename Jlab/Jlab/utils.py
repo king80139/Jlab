@@ -4,7 +4,7 @@ def Read_Arg_(username, prname, arguement, isind=0):  # Backbone Dictionary 스�
     #창민이 버전
     #Lib = pd.read_excel(os.path.join(os.getcwd(), "media", username, prname, "jlabLibrary.xlsx")).fillna(
     #    "")  # worksheet를 pandas DataFrame으로 변환해줍니다.
-    Lib = Read_Sheet_('ProjectLibrary(recent)')  # worksheet를 pandas DataFrame으로 변환해줍니다.
+    Lib = Read_Sheet_(username, prname,'ProjectLibrary(recent)')  # worksheet를 pandas DataFrame으로 변환해줍니다.
 
     target_row = Lib.loc[
         Lib["*함수명/ parameter이름"] == "*" + arguement, ["Reference File (Information)", "Input File/Information",
@@ -60,7 +60,7 @@ def Read_Sheet_(username, prname, sheet_name):  # Backbone Dictionary 스프레�
     import os
     try:
         #worksheet = pd.read_excel(os.path.join(os.getcwd(), "media", username, prname, "JlabMiner library Backbone Dictionary.xlsx"), sheet_name=sheet_name).fillna("")# 창민이 버전
-        worksheet = pd.read_excel("JlabMiner library Backbone Dictionary.xlsx", 요 #내 버전 # Backbone Dictionary가 있는 경로를 써줘야 합니다.
+        worksheet = pd.read_excel("JlabMiner library Backbone Dictionary.xlsx",  #내 버전 # Backbone Dictionary가 있는 경로를 써줘야 합니다.
                                   sheet_name=sheet_name).fillna("")  # 창민아 여기에 서버에 올린 Library 주소를 쓰면 될거야.
     except FileNotFoundError as e:
         if os.path.splitext(sheet_name) == ".csv":
