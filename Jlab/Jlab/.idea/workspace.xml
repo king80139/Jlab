@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="35facf2b-79a7-4daa-a3ad-11d04437c913" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Jlab.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Jlab.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Draw_Static_3D_plot_Space.py" beforeDir="false" afterPath="$PROJECT_DIR$/Draw_Static_3D_plot_Space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jlab_Text_Cleaning_Functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Jlab_Text_Cleaning_Functions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/plots.py" beforeDir="false" afterPath="$PROJECT_DIR$/plots.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
     </list>
@@ -170,7 +166,8 @@
       <workItem from="1621597549160" duration="5140000" />
       <workItem from="1621658324749" duration="7207000" />
       <workItem from="1622289657403" duration="14199000" />
-      <workItem from="1622961699695" duration="2175000" />
+      <workItem from="1622961699695" duration="5119000" />
+      <workItem from="1623461990932" duration="3262000" />
     </task>
     <task id="LOCAL-00001" summary="delete bps, modify some modules">
       <created>1615622566193</created>
@@ -200,7 +197,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618330562903</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="DSS, lemmatizing method modified">
+      <created>1622965770679</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1622965770680</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,17 +214,18 @@
     <MESSAGE value="delete bps, modify some modules" />
     <MESSAGE value="Frequency_Analysis min_count" />
     <MESSAGE value="창민이것과 동기화작업" />
-    <option name="LAST_COMMIT_MESSAGE" value="창민이것과 동기화작업" />
+    <MESSAGE value="DSS, lemmatizing method modified" />
+    <option name="LAST_COMMIT_MESSAGE" value="DSS, lemmatizing method modified" />
   </component>
   <component name="WindowStateProjectService">
     <state x="470" y="200" width="1071" height="706" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1621601155371">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
     <state x="470" y="200" width="1071" height="706" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1680.1025@0.25.1680.1025" timestamp="1621601155371" />
-    <state x="301" y="108" key="CommitChangelistDialog2" timestamp="1618330562722">
+    <state x="301" y="108" key="CommitChangelistDialog2" timestamp="1622965770515">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state x="301" y="108" key="CommitChangelistDialog2/0.25.1680.1025@0.25.1680.1025" timestamp="1618330562722" />
+    <state x="301" y="108" key="CommitChangelistDialog2/0.25.1680.1025@0.25.1680.1025" timestamp="1622965770515" />
     <state width="1638" height="399" key="GridCell.Tab.0.bottom" timestamp="1622353317652">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
@@ -241,14 +246,15 @@
     </state>
     <state width="1638" height="399" key="GridCell.Tab.0.right/0.25.1680.1025@0.25.1680.1025" timestamp="1622353317651" />
     <state width="1878" height="656" key="GridCell.Tab.0.right/1680.25.1920.1055/0.25.1680.1025@1680.25.1920.1055" timestamp="1622302444904" />
-    <state x="440" y="274" key="Vcs.Push.Dialog.v2" timestamp="1618330569772">
+    <state x="440" y="274" key="Vcs.Push.Dialog.v2" timestamp="1622965776666">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state x="440" y="274" key="Vcs.Push.Dialog.v2/0.25.1680.1025@0.25.1680.1025" timestamp="1618330569772" />
-    <state x="547" y="252" width="670" height="657" key="search.everywhere.popup" timestamp="1622352664406">
+    <state x="440" y="274" key="Vcs.Push.Dialog.v2/0.25.1680.1025@0.25.1680.1025" timestamp="1622965776666" />
+    <state x="547" y="252" width="670" height="657" key="search.everywhere.popup" timestamp="1623465633466">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
     <state x="547" y="252" width="670" height="657" key="search.everywhere.popup/0.25.1680.1025@0.25.1680.1025" timestamp="1622352664406" />
+    <state x="547" y="252" width="670" height="657" key="search.everywhere.popup/1680.25.1920.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1623465633466" />
     <state x="2305" y="259" width="670" height="676" key="search.everywhere.popup/1680.25.1920.1055/0.25.1680.1025@1680.25.1920.1055" timestamp="1622302281937" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">

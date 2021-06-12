@@ -258,4 +258,96 @@ def draw_snplot():
     plt.show()
 
 
-__all__ = ['draw_snplot', 'draw_WordCloud']
+def fitplot_3d(cooc):
+    import plotly.express as px
+
+    x = cooc[["W_1^%", "W_2^%"]].max(axis=1)
+    y = cooc["W_1^%"] * cooc["W_2^%"]
+    z = cooc["Fit(1|2)"]
+
+    fig = px.scatter_3d(cooc,
+                        x=x,
+                        y=y,
+                        z=z,
+                        text=cooc["pair"],
+                        opacity=.7,
+                        title="fitplot 3D",
+                        height=1000,
+                        width=1000)
+    fig.write_html("fitplot3D.html")
+    fig.show()
+
+
+def Draw_Map_for_Token_Match_Analysis(username, prname):
+    import plotly.express as px
+    from .utils import Read_Arg_, import_dataframe
+    import os
+
+    _, input_, output_ = Read_Arg_("Draw_Map_for_Token_Match_Analysis")
+    if (username is None) or (prname is None) :
+        cooc = import_dataframe(os.path.join(input_))
+    else :
+        input_directory = "/".join(username,prname)
+        cooc = import_dataframe(os.path.join(input_directory, input_))
+    fig = px.scatter(cooc, x="W_(2|1)^%", y="W_(1|2)^%", text="pair")
+    fig.write_html(f"{output_}")
+    fig.show()
+
+
+def Compare_Keywords_with_Assocated_Texts(username, prname, ):
+    import plotly.graph_objects as go
+    import plotly.express as px
+    import numpy as np
+    from .utils import Read_Arg_, import_dataframe, option_finder
+    import os
+
+    _, input_, output_ = Read_Arg_("3DPlot_for_Pairs(Fit_by_Importance)")
+    min_freq, max_freq = option_finder("3DPlot_for_Pairs(Fit_by_Importance)")["option_1", "option_2"]
+    if (username is None) or (prname is None):
+        cooc = import_dataframe(os.path.join(input_))
+    else:
+        input_directory = "/".join(username, prname)
+        cooc = import_dataframe(os.path.join(input_directory, input_))
+
+    cooc = cooc[
+            (cooc["cooccurrence_count"] >= min_freq*cooc["cooccurrence_count"].max())&
+            (cooc["cooccurrence_count"] <= max_freq*cooc["cooccurrence_count"].max())
+            ]
+    # x = cooc[["W_1^%","W_2^%"]].max(axis=1)
+    # y = cooc["W_1^%"]*cooc["W_2^%"]
+    z = np.log(cooc["Fit(1|2)"])
+
+    fig = px.scatter_3d(cooc,
+                        x="W_1^%",
+                        y="W_2^%",
+                        z=z,
+                        text=cooc["pair"],
+                        opacity=.7,
+                        title="fitplot 3D",
+                        height=1000,
+                        width=1000)
+
+    xaxis_min = cooc["W_1^%"].min()
+    xaxis_max = cooc["W_1^%"].max()
+    yaxis_min = cooc["W_2^%"].min()
+    yaxis_max = cooc["W_2^%"].max()
+    dict_z = {"x": [xaxis_min, xaxis_max, xaxis_max, xaxis_max, xaxis_max, xaxis_min, xaxis_min, xaxis_min],
+              "y": [yaxis_min, yaxis_min, yaxis_min, yaxis_max, yaxis_max, yaxis_max, yaxis_max, yaxis_min],
+              "z": [0] * 8}
+
+    fig.add_trace(go.Scatter3d(x=dict_z["x"],
+                               y=dict_z["y"],
+                               z=dict_z["z"],
+                               mode="lines",
+                               line=dict(width=10,
+                                         color="rgb(000, 000, 000)"),
+                               surfaceaxis=2,
+                               surfacecolor="rgb(204, 204, 153)",
+                               opacity=.5))
+    fig.write_html(f"{output_}")
+    fig.show()
+
+__all__ = ['draw_snplot', 'draw_WordCloud', 'Compare_Keywords_with_Assocated_Texts', 'Draw_Map_for_Token_Match_Analysis']
+
+
+
