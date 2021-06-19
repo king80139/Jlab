@@ -320,6 +320,7 @@ def Replace_Texts_in_Messages(username, prname):  # 1차 Lemmatization 함수
     #     new_lines리스트에 new_line을 추가한다.
     res = res.sort_values(by=["line_no","token_no"])
     renewed = res.groupby("line_no", as_index=False).agg({'token': ' '.join})["token"]
+    print("완료!")
     input_Message["contents"] = renewed
 
 
