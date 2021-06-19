@@ -221,11 +221,15 @@ def Replace_Texts_in_Messages(username, prname):  # 1차 Lemmatization 함수
     import os, re
     import pandas as pd
     from tqdm import tqdm
-    from .utils import Read_Arg_, Read_Sheet_, import_dataframe, export_dataframe
+    from utils import Read_Arg_, Read_Sheet_, import_dataframe, export_dataframe
     from flashtext import KeywordProcessor
     tqdm.pandas()
-    input_directory = "/".join([username, prname])  # Non-창민버전
-    kp = KeywordProcessor()
+
+    if (username is None) or (prname is None):
+        input_directory = ""
+    else:
+        input_directory = "/".join([username, prname])  # Non-창민버전
+    #kp = KeywordProcessor()
     ref, input_, output_ = Read_Arg_(username,prname,"Replace_Texts_in_Messages")  # Read_Arg를 통해 참조파일, input파일, output파일을 불러옵니다.
     # 이 때 ref는 "JDic_Lemmatization(일반lemma사전)"시트를,
     # input파일은 메세지 csv파일의 이름,
@@ -293,7 +297,7 @@ def Replace_Texts_in_Messages(username, prname):  # 1차 Lemmatization 함수
     token_no = []
     token = []
     for lines in enumerate(input_Message["contents"]):
-        for tokens in enumerate(lines[1].split()):
+        for tokens in enumerate(str(lines[1]).split()):
             line_no.append(lines[0])
             token_no.append(tokens[0])
             token.append(tokens[1])
@@ -314,11 +318,18 @@ def Replace_Texts_in_Messages(username, prname):  # 1차 Lemmatization 함수
     #     res의 "line_no"가  i번째인 부분을 가져온 후, "token_no"를 기준으로 오름차순으로 정렬한 후 그 순서대로 "lem"열에 있는 token들을 정렬한다.
     #     정렬된 token 사이를 띄어쓰기로 채워 넣어 한 문장으로 만들어 new_line이라는 변수에 저장한다.
     #     new_lines리스트에 new_line을 추가한다.
-    for i in tqdm(res["line_no"].unique()):
-        new_line = " ".join(res[res["line_no"] == i].sort_values(by="token_no", ascending=True)["lem"])
-        new_lines.append(new_line)
-    # 최종적으로 누적된 new_lines를 input_Message의 "contents"열에 넣어 갱신해준다.
-    input_Message["contents"] = new_lines
+    res = res.sort_values(by=["line_no","token_no"])
+    renewed = res.groupby("line_no", as_index=False).agg({'token': ' '.join})["token"]
+    input_Message["contents"] = renewed
+
+
+    # sen_no = res["line_no"].unique()
+    #
+    # for i in tqdm(sen_no):
+    #     new_line = " ".join(res[res["line_no"] == i].sort_values(by="token_no", ascending=True)["lem"])
+    #     new_lines.append(new_line)
+    # # 최종적으로 누적된 new_lines를 input_Message의 "contents"열에 넣어 갱신해준다.
+    # input_Message["contents"] = new_lines
 
     output_name = os.path.join(input_directory, output_)
     export_dataframe(input_Message, output_name)
