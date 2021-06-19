@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="35facf2b-79a7-4daa-a3ad-11d04437c913" name="Default Changelist" comment="untokenizing in Lemmatization modified">
+    <list default="true" id="35facf2b-79a7-4daa-a3ad-11d04437c913" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/Jlab_Text_Cleaning_Functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Jlab_Text_Cleaning_Functions.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -166,7 +166,7 @@
       <workItem from="1622289657403" duration="14199000" />
       <workItem from="1622961699695" duration="5119000" />
       <workItem from="1623461990932" duration="4846000" />
-      <workItem from="1624082565201" duration="4689000" />
+      <workItem from="1624082565201" duration="4704000" />
     </task>
     <task id="LOCAL-00001" summary="delete bps, modify some modules">
       <created>1615622566193</created>
@@ -217,7 +217,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624090922006</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="untokenizing in Lemmatization modified">
+      <created>1624091151192</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1624091151192</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,17 +235,18 @@
     <MESSAGE value="Frequency_Analysis min_count" />
     <MESSAGE value="창민이것과 동기화작업" />
     <MESSAGE value="DSS, lemmatizing method modified" />
-    <option name="LAST_COMMIT_MESSAGE" value="DSS, lemmatizing method modified" />
+    <MESSAGE value="untokenizing in Lemmatization modified" />
+    <option name="LAST_COMMIT_MESSAGE" value="untokenizing in Lemmatization modified" />
   </component>
   <component name="WindowStateProjectService">
     <state x="470" y="200" width="1071" height="706" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1621601155371">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
     <state x="470" y="200" width="1071" height="706" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1680.1025@0.25.1680.1025" timestamp="1621601155371" />
-    <state x="301" y="108" key="CommitChangelistDialog2" timestamp="1624091038204">
+    <state x="301" y="108" key="CommitChangelistDialog2" timestamp="1624091151091">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state x="301" y="108" key="CommitChangelistDialog2/0.25.1680.1025@0.25.1680.1025" timestamp="1624091038204" />
+    <state x="301" y="108" key="CommitChangelistDialog2/0.25.1680.1025@0.25.1680.1025" timestamp="1624091151091" />
     <state x="301" y="108" key="CommitChangelistDialog2/1680.25.1920.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1623465775350" />
     <state width="1638" height="399" key="GridCell.Tab.0.bottom" timestamp="1622353317652">
       <screen x="0" y="25" width="1680" height="1025" />
