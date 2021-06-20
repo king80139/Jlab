@@ -3,7 +3,7 @@ def draw_WordCloud(username,prname):
     import matplotlib.pyplot as plt
     from matplotlib import font_manager
     import pandas as pd
-    from .utils import Read_Arg_
+    from utils import Read_Arg_
 
     # stopwords = {"또는", "그리고", "매우", "그냥", "또한", "그러나", "바로", "너무", "정말", "입니다", "하는", "어떤", "에서", "이지만", "합니다", "있다",
     #               "있습니다", "있는", "있지만", "거의", "아주", "조금", "하고", "있어서", "것을", "위해", "하지만", "것입니다",
@@ -50,7 +50,7 @@ def draw_snplot():
     import matplotlib.pyplot as plt
     import networkx as nx
     import pandas as pd
-    from .utils import Read_Sheet_, Read_Arg_
+    from utils import Read_Sheet_, Read_Arg_
 
 
     plt.rcParams['axes.unicode_minus'] = False
@@ -84,15 +84,16 @@ def draw_snplot():
 
     matplotlib.font_manager._rebuild()
 
-    ref_, input_, output_ = Read_Arg_("draw_snplot")
+    ref_, input_, output_ = Read_Arg_(None, None, "Draw_snplot")
     try:
-        Dic = Read_Sheet_("JDic_Backbone_Korean")
+        Dic = Read_Sheet_(None, None, "Backbone확인받고 지울 것")
         coo = pd.read_csv(input_)
     except UnicodeDecodeError:
-        Dic = Read_Sheet_("JDic_Backbone_Korean")
+        Dic = Read_Sheet_(None, None, "Backbone확인받고 지울 것")
         coo = pd.read_csv(input_, encoding = "cp949")
 
-    ## coo 로 fNl을 만들고, 이 둘을 nx에 넣어서 BC값 구해서 fNl옆에 넣어주는 거 해야함.
+    ## coo 로 fNl을 만들고, 이 둘을 nx에 넣어서 BC값 구해서 fNl
+    # 옆에 넣어주는 거 해야함.
     tokens = set(list(coo["tag_1"]) + list(coo["tag_2"]))
 
     def fill_out_cooc_table_for_each_token(word, cooc_table, new_table, cluster=0):
@@ -200,7 +201,7 @@ def draw_snplot():
 
     real_fNl = pd.merge(fNl, BC_Table, how="inner", on="tag")
     real_fNl = real_fNl[
-        real_fNl["cooccur_count"] > (real_fNl["cooccur_count"].max()) * 0.05]  # 최소 공빈도 이상의 단어만 가져가기 (최대의 5%)
+        real_fNl["cooccur_count"] > (real_fNl["cooccur_count"].max()) * 0.01]  # 최소 공빈도 이상의 단어만 가져가기 (최대의 5%)
     real_fNl["O_or_D"] = real_fNl["type"].apply(
         lambda x: "D" if x in ["d", "a", "x"] else "Uncategorized" if x == "" else "O")
 
@@ -229,12 +230,14 @@ def draw_snplot():
 
     # print(Entire_relations)
     import math
-    pos = nx.spring_layout(GRAPH, k=100 / math.sqrt(GRAPH.order()), seed=20)
+    pos = nx.spring_layout(GRAPH, k=1, seed=20)
+    #pos = nx.spectral_layout(GRAPH)
+
 
 
 
     nx.draw_networkx_nodes(
-        GRAPH, pos, cmap="Reds", linewidths=5,
+        GRAPH, pos, cmap="Pastel1", linewidths=5,
         edgecolors=[(n[1]['edgecolor']) for n in GRAPH.nodes(data=True)],
         node_size=[n[1]['weight'] / max(list(real_fNl.cooccur_count)) * 5000 for n in GRAPH.nodes(data=True)],
         node_color=[-1 * (n[1]['b.c']) for n in GRAPH.nodes(data=True)]
@@ -242,7 +245,7 @@ def draw_snplot():
 
     nx.draw_networkx_edges(
         GRAPH, pos, edge_color='grey', arrows=True, alpha=.6,
-        width=[e[2]['weight'] / 100 for e in GRAPH.edges(data=True)]
+        width=[e[2]['weight'] / 10 for e in GRAPH.edges(data=True)]
     )
 
     nx.draw_networkx_labels(
@@ -347,7 +350,96 @@ def Compare_Keywords_with_Assocated_Texts(username, prname, ):
     fig.write_html(f"{output_}")
     fig.show()
 
-__all__ = ['draw_snplot', 'draw_WordCloud', 'Compare_Keywords_with_Assocated_Texts', 'Draw_Map_for_Token_Match_Analysis']
+
+
+def draw_subjDesc_plot(username, prname):
+    import pandas as pd
+    import matplotlib
+    import platform
+    from matplotlib import font_manager, rc
+    from utils import Read_Sheet_, Read_Arg_
+    import matplotlib.pyplot as plt
+
+    import networkx as nx
+
+    plt.rcParams['axes.unicode_minus'] = False
+    # % matplotlib inline
+    plt.figure(figsize=(30, 30))
+
+    try:
+        # 한글 폰트 설정을 위한 코드블럭입니다.
+        if platform.system() == 'Darwin':  # 맥os 사용자의 경우에
+            plt.style.use('seaborn-darkgrid')
+            font_name = "AppleGothic"
+            rc('font', family=font_name)
+        elif platform.system() == 'Windows':  # 윈도우 사용자의 경우에
+            path = 'c:/Windows/Fonts/malgun.ttf'
+            font_name = font_manager.FontProperties(fname=path).get_name()
+            plt.style.use('seaborn-darkgrid')  # https://python-graph-gallery.com/199-matplotlib-style-sheets/
+            rc('font', family=font_name)
+        elif platform.system() == "Linux":  # 코랩에서 사용할 경우
+            path = '/usr/share/fonts/truetype/nanum/NanumBarunGothic.ttf'
+            font_name = font_manager.FontProperties(fname=path).get_name()
+            plt.style.use('seaborn-darkgrid')
+            plt.rc('font', family=font_name)
+        else:
+            font_name = ""
+            raise Exception('적절한 한글용 폰트의 경로가 설정되지 않았습니다. ')
+    except Exception as e:  # 예외가 발생했을 때 실행됨
+        print('예외가 발생했습니다.', e)
+
+    matplotlib.font_manager._rebuild()
+
+    ref_, input_, output_ = Read_Arg_(None, None, "draw_subjDesc_plot")
+    try:
+        Dic = Read_Sheet_(None, None, "Backbone확인받고 지울 것")
+        coo = pd.read_csv(input_)
+    except UnicodeDecodeError:
+        Dic = Read_Sheet_(None, None, "Backbone확인받고 지울 것")
+        coo = pd.read_csv(input_, encoding="cp949")
+
+    wordList = list(set(coo["tag_1"].append(coo["tag_2"])))
+    wordDic = {}
+    for w in wordList:
+        print(w)
+        if len(Dic.loc[(Dic["tag"] == w) & (Dic["type1"] == "b"), "type1"]) == 0:
+            brand = ""
+        elif len(Dic.loc[(Dic["tag"] == w) & (Dic["type1"] == "b"), "type1"]) != 0:
+            brand = w
+        else:
+            pass
+
+        if len(Dic[(Dic["tag"] == w) & (Dic["product_attribute"] != "")]["product_attribute"].dropna()) == 0:
+            prodAtt = ""
+        elif len(Dic[(Dic["tag"] == w) & (Dic["product_attribute"] != "")]["product_attribute"].dropna()) != 0:
+            prodAtt = Dic[(Dic["tag"] == w) & (Dic["product_attribute"] != "")]["product_attribute"].tolist()[0]
+        else:
+            pass
+
+        if len(Dic[(Dic["tag"] == w) & (Dic["valence"] != "")]["valence"].dropna()) == 0:
+            valence = ""
+        elif len(Dic[(Dic["tag"] == w) & (Dic["valence"] != "")]["valence"].dropna()) != 0:
+            prodAtt = Dic[(Dic["tag"] == w) & (Dic["valence"] != "")]["valence"].tolist()[0]
+        else:
+            pass
+
+        wordDic[w] = [brand, prodAtt, valence]
+
+    coo["tag_1_brand"] = coo["tag_1"].apply(lambda x : wordDic[x][0])
+    coo["tag_1_attrib"] = coo["tag_1"].apply(lambda x: wordDic[x][1])
+    coo["tag_1_valence"] = coo["tag_1"].apply(lambda x: wordDic[x][2])
+    coo["tag_2_brand"] = coo["tag_2"].apply(lambda x: wordDic[x][0])
+    coo["tag_2_attrib"] = coo["tag_2"].apply(lambda x: wordDic[x][1])
+    coo["tag_2_valence"] = coo["tag_2"].apply(lambda x: wordDic[x][2])
+    #
+    # coo = coo[
+    #         ((coo["tag_1_attrib"] is not None) and (coo["tag_2_brand"] is not None)) or
+    #         ((coo["tag_1_brand"] is not None) and (coo["tag_2_attrib"] is not None))
+    # ]
+
+
+    return coo
+__all__ = ['draw_snplot', 'draw_WordCloud', 'Compare_Keywords_with_Assocated_Texts', 'Draw_Map_for_Token_Match_Analysis', 'draw_subjDesc_plot']
 
 
 

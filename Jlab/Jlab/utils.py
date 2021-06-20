@@ -26,8 +26,8 @@ def Read_Arg_(username, prname, arguement, isind=0):  # Backbone Dictionary 스�
 
         return [refFile_info, Input_info, Output]  # 참조파일, input 파일, output 파일을 차례로 리턴해줍니다.
 
-def option_finder(arg):
-    sht = Read_Sheet_("ProjectLibrary(recent)")
+def option_finder(prname, username, arg):
+    sht = Read_Sheet_(prname, username, "ProjectLibrary(recent)")
     underrow=sht.shift(-1)[
         sht["*함수명/ parameter이름"]==f"*{arg}"].applymap(
             lambda x: None if x=="" else x
@@ -60,7 +60,7 @@ def Read_Sheet_(username, prname, sheet_name):  # Backbone Dictionary 스프레�
     import os
     try:
         #worksheet = pd.read_excel(os.path.join(os.getcwd(), "media", username, prname, "JlabMiner library Backbone Dictionary.xlsx"), sheet_name=sheet_name).fillna("")# 창민이 버전
-        if (username is None) or (prname is None):
+        if (prname is None) or (username is None) :
             worksheet = pd.read_excel("JlabMiner library Backbone Dictionary.xlsx",  #내 버전 # Backbone Dictionary가 있는 경로를 써줘야 합니다.
                                   sheet_name=sheet_name).fillna("")  # 창민아 여기에 서버에 올린 Library 주소를 쓰면 될거야.
         elif (username is not None) and (prname is not None):

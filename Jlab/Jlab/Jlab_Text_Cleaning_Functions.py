@@ -288,7 +288,11 @@ def Replace_Texts_in_Messages(username, prname):  # 1차 Lemmatization 함수
     lemm = pd.DataFrame({"raw": lemee, "lem": lemer})
 
     # 원문데이터를 불러와 DataFrame형식으로 input_Message리는 변수에 담는다.
-    input_name = os.path.join(input_)
+    if (username is None) or (prname is None):
+        input_name = os.path.join(input_)
+    else:
+        input_directory = "/".join([username, prname])  # Non-창민버전
+        input_name = os.path.join(input_directory,input_)
     input_Message = import_dataframe(input_name)
 
     # 원문 데이터로부 line넘버, token넘버고, token을 추출해
@@ -501,8 +505,8 @@ def Frequency_Analysis(username, prname):
     import pandas as pd
     from collections import Counter
     from tqdm import tqdm as bar
-    from .utils import Read_Arg_, import_dataframe, export_dataframe
-    input_directory = "/".join([username, prname])  # Non-창민버전
+    from utils import Read_Arg_, import_dataframe, export_dataframe
+    #input_directory = "/".join([username, prname])  # Non-창민버전
 
     if prname is not None: # prname이 써있는 것 -> 타 함수 내에서 사용 : 딕셔너리 사용.
         for_cooc = 0  # 순수하게 Frequency_Analysis를 해야할 우 ->
@@ -511,7 +515,7 @@ def Frequency_Analysis(username, prname):
         text = import_dataframe(input_)
     else: # 분석할 textfile을 username에 적는다.
         for_cooc = 1
-        ref, _, _ = Read_Arg_("Frequency_Analysis", isind=1)
+        ref, _, _ = Read_Arg_(username, prname, "Frequency_Analysis", isind=1)
         Frequency_Gap = int(ref) / 100
         text = import_dataframe(username)
 
@@ -538,7 +542,7 @@ def Frequency_Analysis(username, prname):
         tag_count.append(dics)
 
     df_tag_count = pd.DataFrame(tag_count)
-    df_tag_count = df_tag_count[df_tag_count["count"] >= 50].sort_values(by="tag").reset_index(drop=True)
+    df_tag_count = df_tag_count[df_tag_count["count"] >= 10].sort_values(by="tag").reset_index(drop=True)
     iterations = len(df_tag_count)
     row_num = 0
 
@@ -603,21 +607,22 @@ def make_cotable(freq_tag, mes_tbl):
 ########################################################################################################################
 
 def Make_Cooccurrence_Table(username, prname):
-    from .utils import Read_Arg_, import_dataframe, export_dataframe
+    from utils import Read_Arg_, import_dataframe, export_dataframe
     from tqdm import tqdm
 
     if prname is not None:
         ind = 1 # 독립적으로 쓰이는 경우, Backbone사용
-        ref, input_, output_ = Read_Arg_("Make_Cooccurrence_Table")
+        ref, input_, output_ = Read_Arg_(username, prname, "Make_Cooccurrence_Table")
         Message_Df = import_dataframe(input_)
 
     else:
         ind = 0 # 다른 함수 내에서 사용될 경우, username에 분석할 text데이터를 넣는다.
+        ref, input_, output_ = Read_Arg_(username, prname, "Make_Cooccurrence_Table")
         Message_Df = import_dataframe(username)
 
 
-    Freq_df = Frequency_Analysis(text_file=Message_Df)  # 검색어 포함 할 때
-    Freq_100 = Freq_df[Freq_df["count"] >= Freq_df["count"].max() * ref]
+    Freq_df = Frequency_Analysis(Message_Df, prname)  # 검색어 포함 할 때
+    Freq_100 = Freq_df[Freq_df["count"] >= Freq_df["count"].max() * 0.0001] #원래 ref라는 변수로 비율을 가져와야 하느데...
     Freq_100_tag = list(Freq_100.tag)
 
     CoTable = make_cotable(Freq_100_tag, Message_Df)
@@ -649,7 +654,7 @@ def Make_Cooccurrence_Table(username, prname):
     CoTable_stacked = CoTable_stacked[CoTable_stacked["includes"] != 1]
     CoTable_stacked = CoTable_stacked[CoTable_stacked.columns[:-1]]
     CoTable_stacked = CoTable_stacked.loc[
-        CoTable_stacked["cooccurrence_count"] >= CoTable_stacked["cooccurrence_count"].max() * 0.05]
+        CoTable_stacked["cooccurrence_count"] >= CoTable_stacked["cooccurrence_count"].max() * 0.001]
     CoTable_stacked = CoTable_stacked.sort_values(by='cooccurrence_count', ascending=False).reset_index(drop=True)
 
     keyword_dict = dict()
@@ -682,7 +687,7 @@ def Make_Cooccurrence_Table(username, prname):
     if ind == 1:
         export_dataframe(CoTable_stacked, output_)
     else:
-        pass
+        export_dataframe(CoTable_stacked, output_)
     #output_name = os.path.join(input_directory, output_)
 
     return CoTable_stacked
