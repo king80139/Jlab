@@ -288,7 +288,11 @@ def Replace_Texts_in_Messages(username, prname):  # 1차 Lemmatization 함수
     lemm = pd.DataFrame({"raw": lemee, "lem": lemer})
 
     # 원문데이터를 불러와 DataFrame형식으로 input_Message리는 변수에 담는다.
-    input_name = os.path.join(input_)
+    if (username is None) or (prname is None):
+        input_name = os.path.join(input_)
+    else:
+        input_directory = "/".join([username, prname])  # Non-창민버전
+        input_name = os.path.join(input_directory,input_)
     input_Message = import_dataframe(input_name)
 
     # 원문 데이터로부 line넘버, token넘버고, token을 추출해
