@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="35facf2b-79a7-4daa-a3ad-11d04437c913" name="Default Changelist" comment="input_directory optimized">
-      <change afterPath="$PROJECT_DIR$/test2.py" afterDir="false" />
+    <list default="true" id="35facf2b-79a7-4daa-a3ad-11d04437c913" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jlab_Text_Cleaning_Functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Jlab_Text_Cleaning_Functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plots.py" beforeDir="false" afterPath="$PROJECT_DIR$/plots.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,12 +19,13 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
-        <option value="king80139 &lt;57906236+king80139@users.noreply.github.com&gt;" />
         <option value="Sukhoon &lt;king80139@gmail.com&gt;" />
+        <option value="king80139 &lt;57906236+king80139@users.noreply.github.com&gt;" />
         <option value="king" />
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="JupyterTrust" id="534c1c79-6db5-49b3-bf02-0e7f17596daa" />
   <component name="ProjectId" id="1oQ57Bzkm1Wbbt1rmgaPGXopO7A" />
@@ -48,6 +45,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
   <component name="RunManager" selected="Python.test2">
     <configuration name="다음블로그추출" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -169,6 +167,9 @@
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="35facf2b-79a7-4daa-a3ad-11d04437c913" name="Default Changelist" comment="" />
@@ -204,7 +205,7 @@
       <workItem from="1628929183840" duration="6024000" />
       <workItem from="1629597822884" duration="3361000" />
       <workItem from="1630162931781" duration="8853000" />
-      <workItem from="1630762624858" duration="4056000" />
+      <workItem from="1630762624858" duration="4811000" />
     </task>
     <task id="LOCAL-00001" summary="delete bps, modify some modules">
       <created>1615622566193</created>
@@ -276,7 +277,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624165166916</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="input_directory optimized">
+      <created>1630768163490</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1630768163490</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -292,11 +300,11 @@
     <option name="LAST_COMMIT_MESSAGE" value="input_directory optimized" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="301" y="108" key="CommitChangelistDialog2" timestamp="1630763867200">
+    <state x="301" y="108" key="CommitChangelistDialog2" timestamp="1630768163307">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
     <state x="301" y="108" key="CommitChangelistDialog2/0.25.1680.1025@0.25.1680.1025" timestamp="1630763867200" />
-    <state x="301" y="108" key="CommitChangelistDialog2/1680.25.1920.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1623465775350" />
+    <state x="301" y="108" key="CommitChangelistDialog2/1680.25.1920.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1630768163307" />
     <state x="714" y="438" key="Github.ShareDialog" timestamp="1630763936624">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
@@ -325,11 +333,15 @@
     <state width="1638" height="399" key="GridCell.Tab.0.right/0.25.1440.875/-556.-1055.1920.1055@-556.-1055.1920.1055" timestamp="1630234544160" />
     <state width="1638" height="399" key="GridCell.Tab.0.right/0.25.1680.1025@0.25.1680.1025" timestamp="1630206105985" />
     <state width="1878" height="656" key="GridCell.Tab.0.right/1680.25.1920.1055/0.25.1680.1025@1680.25.1920.1055" timestamp="1622302444904" />
-    <state x="0" y="25" width="1680" height="1025" key="Vcs.Push.Dialog.v2" timestamp="1624165174278">
+    <state x="600" y="135" key="SettingsEditor" timestamp="1630772097919">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state x="0" y="25" width="1680" height="1025" key="Vcs.Push.Dialog.v2/0.25.1680.1025@0.25.1680.1025" timestamp="1624165174278" />
-    <state x="440" y="274" key="Vcs.Push.Dialog.v2/1680.25.1920.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1623465780516" />
+    <state x="600" y="135" key="SettingsEditor/0.25.1680.1025@0.25.1680.1025" timestamp="1630772097919" />
+    <state x="0" y="25" width="1680" height="1025" key="Vcs.Push.Dialog.v2" timestamp="1630772154134">
+      <screen x="0" y="25" width="1680" height="1025" />
+    </state>
+    <state x="0" y="25" width="1680" height="1025" key="Vcs.Push.Dialog.v2/0.25.1680.1025@0.25.1680.1025" timestamp="1630772154134" />
+    <state x="440" y="274" key="Vcs.Push.Dialog.v2/1680.25.1920.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1630768177174" />
     <state x="547" y="252" width="670" height="657" key="search.everywhere.popup" timestamp="1630204188341">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
