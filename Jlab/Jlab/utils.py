@@ -84,7 +84,7 @@ def Read_Sheet_(username, prname, sheet_name):  # Backbone Dictionary 스프레�
     return worksheet
 
 
-def sequential_run():
+def sequential_run(): # 복수 명령문  처리 (순서는 Backbone Dictionary 스프레드 시트를 기반
     from openpyxl import load_workbook
     from .Jlab_Text_Cleaning_Functions import Delete_Messages, Delete_Characters, Delete_Characters_by_Dic, Delete_Overlapped_Messages, Delete_StandardStopwords, Replace_Texts_in_Messages, Replace_Texts_by_Dic, Frequency_Analysis, Make_Cooccurrence_Table
     from .Calculate_BD import Calculate_BD
