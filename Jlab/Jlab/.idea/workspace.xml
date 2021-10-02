@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="35facf2b-79a7-4daa-a3ad-11d04437c913" name="Default Changelist" comment="SNA_3GRAM added">
-      <change afterPath="$PROJECT_DIR$/(SNA)전기차 블로그 카페 중복제거 오름차순정렬.csv.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/~$JlabMiner library Backbone Dictionary.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/~$전기차리뷰파일.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/공빈도 정사각형 테스트.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/카페통합_light.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test2.py" beforeDir="false" afterPath="$PROJECT_DIR$/test2.py" afterDir="false" />
-    </list>
+    <list default="true" id="35facf2b-79a7-4daa-a3ad-11d04437c913" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -304,7 +296,14 @@
       <option name="project" value="LOCAL" />
       <updated>1630817919022</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="SHH repo와 연동">
+      <created>1633197777836</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1633197777836</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,13 +318,14 @@
     <MESSAGE value="untokenizing in Lemmatization modified" />
     <MESSAGE value="input_directory optimized" />
     <MESSAGE value="bps added" />
-    <option name="LAST_COMMIT_MESSAGE" value="bps added" />
+    <MESSAGE value="SHH repo와 연동" />
+    <option name="LAST_COMMIT_MESSAGE" value="SHH repo와 연동" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="301" y="108" key="CommitChangelistDialog2" timestamp="1630817918929">
+    <state x="301" y="108" key="CommitChangelistDialog2" timestamp="1633197777665">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state x="301" y="108" key="CommitChangelistDialog2/0.25.1680.1025@0.25.1680.1025" timestamp="1630763867200" />
+    <state x="301" y="108" key="CommitChangelistDialog2/0.25.1680.1025@0.25.1680.1025" timestamp="1633197777665" />
     <state x="301" y="108" key="CommitChangelistDialog2/1680.25.1920.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1630817918929" />
     <state x="714" y="438" key="Github.ShareDialog" timestamp="1630763936624">
       <screen x="0" y="25" width="1680" height="1025" />
@@ -355,11 +355,15 @@
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
     <state x="600" y="135" key="SettingsEditor/0.25.1680.1025@0.25.1680.1025" timestamp="1630772097919" />
-    <state x="0" y="25" width="1680" height="1025" key="Vcs.Push.Dialog.v2" timestamp="1633197603536">
+    <state x="0" y="25" width="1680" height="1025" key="Vcs.Push.Dialog.v2" timestamp="1633197786723">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state x="0" y="25" width="1680" height="1025" key="Vcs.Push.Dialog.v2/0.25.1680.1025@0.25.1680.1025" timestamp="1633197603536" />
+    <state x="0" y="25" width="1680" height="1025" key="Vcs.Push.Dialog.v2/0.25.1680.1025@0.25.1680.1025" timestamp="1633197786723" />
     <state x="440" y="274" key="Vcs.Push.Dialog.v2/1680.25.1920.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1630817925958" />
+    <state x="641" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1633197969471">
+      <screen x="0" y="25" width="1680" height="1025" />
+    </state>
+    <state x="641" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.25.1680.1025@0.25.1680.1025" timestamp="1633197969471" />
     <state x="547" y="252" width="670" height="657" key="search.everywhere.popup" timestamp="1632025296938">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
