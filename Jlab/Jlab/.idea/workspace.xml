@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="35facf2b-79a7-4daa-a3ad-11d04437c913" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Jlab_Text_Cleaning_Functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Jlab_Text_Cleaning_Functions.py" afterDir="false" />
+    <list default="true" id="35facf2b-79a7-4daa-a3ad-11d04437c913" name="Default Changelist" comment="SNA_3GRAM added">
+      <change afterPath="$PROJECT_DIR$/(SNA)전기차 블로그 카페 중복제거 오름차순정렬.csv.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/~$JlabMiner library Backbone Dictionary.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/~$전기차리뷰파일.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/공빈도 정사각형 테스트.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/카페통합_light.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test2.py" beforeDir="false" afterPath="$PROJECT_DIR$/test2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,21 +25,25 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
-        <option value="king80139 &lt;57906236+king80139@users.noreply.github.com&gt;" />
         <option value="Sukhoon &lt;king80139@gmail.com&gt;" />
+        <option value="king80139 &lt;57906236+king80139@users.noreply.github.com&gt;" />
         <option value="king" />
       </list>
     </option>
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="JupyterTrust" id="534c1c79-6db5-49b3-bf02-0e7f17596daa" />
   <component name="ProjectId" id="1oQ57Bzkm1Wbbt1rmgaPGXopO7A" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -44,8 +54,9 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python.test2">
     <configuration name="다음블로그추출" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Jlab" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -134,14 +145,40 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="test2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Jlab" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/anaconda3/bin/python3.7" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.test2" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.다음블로그추출" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="35facf2b-79a7-4daa-a3ad-11d04437c913" name="Default Changelist" comment="" />
@@ -166,7 +203,22 @@
       <workItem from="1622289657403" duration="14199000" />
       <workItem from="1622961699695" duration="5119000" />
       <workItem from="1623461990932" duration="4846000" />
-      <workItem from="1624082565201" duration="4704000" />
+      <workItem from="1624082565201" duration="5007000" />
+      <workItem from="1624163480831" duration="2286000" />
+      <workItem from="1624551611909" duration="632000" />
+      <workItem from="1624578623099" duration="596000" />
+      <workItem from="1625980429903" duration="1166000" />
+      <workItem from="1626523917322" duration="5116000" />
+      <workItem from="1627742528120" duration="9398000" />
+      <workItem from="1628338106149" duration="1315000" />
+      <workItem from="1628929183840" duration="6024000" />
+      <workItem from="1629597822884" duration="3361000" />
+      <workItem from="1630162931781" duration="8853000" />
+      <workItem from="1630762624858" duration="5460000" />
+      <workItem from="1632010563456" duration="132000" />
+      <workItem from="1632011679511" duration="547000" />
+      <workItem from="1632015348456" duration="5077000" />
+      <workItem from="1633187664623" duration="8481000" />
     </task>
     <task id="LOCAL-00001" summary="delete bps, modify some modules">
       <created>1615622566193</created>
@@ -224,64 +276,98 @@
       <option name="project" value="LOCAL" />
       <updated>1624091151192</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="untokenizing in Lemmatization modified">
+      <created>1624091166885</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1624091166885</updated>
+    </task>
+    <task id="LOCAL-00010" summary="input_directory optimized">
+      <created>1624165166916</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1624165166916</updated>
+    </task>
+    <task id="LOCAL-00011" summary="input_directory optimized">
+      <created>1630768163490</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1630768163490</updated>
+    </task>
+    <task id="LOCAL-00012" summary="bps added">
+      <created>1630817919022</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1630817919022</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="delete bps, modify some modules" />
     <MESSAGE value="Frequency_Analysis min_count" />
     <MESSAGE value="창민이것과 동기화작업" />
     <MESSAGE value="DSS, lemmatizing method modified" />
     <MESSAGE value="untokenizing in Lemmatization modified" />
-    <option name="LAST_COMMIT_MESSAGE" value="untokenizing in Lemmatization modified" />
+    <MESSAGE value="input_directory optimized" />
+    <MESSAGE value="bps added" />
+    <option name="LAST_COMMIT_MESSAGE" value="bps added" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="470" y="200" width="1071" height="706" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1621601155371">
+    <state x="301" y="108" key="CommitChangelistDialog2" timestamp="1630817918929">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state x="470" y="200" width="1071" height="706" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1680.1025@0.25.1680.1025" timestamp="1621601155371" />
-    <state x="301" y="108" key="CommitChangelistDialog2" timestamp="1624091151091">
+    <state x="301" y="108" key="CommitChangelistDialog2/0.25.1680.1025@0.25.1680.1025" timestamp="1630763867200" />
+    <state x="301" y="108" key="CommitChangelistDialog2/1680.25.1920.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1630817918929" />
+    <state x="714" y="438" key="Github.ShareDialog" timestamp="1630763936624">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state x="301" y="108" key="CommitChangelistDialog2/0.25.1680.1025@0.25.1680.1025" timestamp="1624091151091" />
-    <state x="301" y="108" key="CommitChangelistDialog2/1680.25.1920.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1623465775350" />
-    <state width="1638" height="399" key="GridCell.Tab.0.bottom" timestamp="1622353317652">
+    <state x="714" y="438" key="Github.ShareDialog/0.25.1680.1025@0.25.1680.1025" timestamp="1630763936624" />
+    <state width="1638" height="281" key="GridCell.Tab.0.bottom" timestamp="1632155242150">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state width="1638" height="399" key="GridCell.Tab.0.bottom/0.25.1680.1025@0.25.1680.1025" timestamp="1622353317652" />
-    <state width="1878" height="656" key="GridCell.Tab.0.bottom/1680.25.1920.1055/0.25.1680.1025@1680.25.1920.1055" timestamp="1622302444904" />
-    <state width="1638" height="399" key="GridCell.Tab.0.center" timestamp="1622353317651">
+    <state width="1638" height="399" key="GridCell.Tab.0.bottom/0.25.1440.875/-556.-1055.1920.1055@-556.-1055.1920.1055" timestamp="1630234544160" />
+    <state width="1638" height="281" key="GridCell.Tab.0.bottom/0.25.1680.1025@0.25.1680.1025" timestamp="1632155242150" />
+    <state width="1638" height="281" key="GridCell.Tab.0.center" timestamp="1632155242150">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state width="1638" height="399" key="GridCell.Tab.0.center/0.25.1680.1025@0.25.1680.1025" timestamp="1622353317651" />
-    <state width="1878" height="656" key="GridCell.Tab.0.center/1680.25.1920.1055/0.25.1680.1025@1680.25.1920.1055" timestamp="1622302444903" />
-    <state width="1638" height="399" key="GridCell.Tab.0.left" timestamp="1622353317650">
+    <state width="1638" height="399" key="GridCell.Tab.0.center/0.25.1440.875/-556.-1055.1920.1055@-556.-1055.1920.1055" timestamp="1630234544160" />
+    <state width="1638" height="281" key="GridCell.Tab.0.center/0.25.1680.1025@0.25.1680.1025" timestamp="1632155242150" />
+    <state width="1638" height="281" key="GridCell.Tab.0.left" timestamp="1632155242149">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state width="1638" height="399" key="GridCell.Tab.0.left/0.25.1680.1025@0.25.1680.1025" timestamp="1622353317650" />
-    <state width="1878" height="656" key="GridCell.Tab.0.left/1680.25.1920.1055/0.25.1680.1025@1680.25.1920.1055" timestamp="1622302444903" />
-    <state width="1638" height="399" key="GridCell.Tab.0.right" timestamp="1622353317651">
+    <state width="1638" height="399" key="GridCell.Tab.0.left/0.25.1440.875/-556.-1055.1920.1055@-556.-1055.1920.1055" timestamp="1630234544159" />
+    <state width="1638" height="281" key="GridCell.Tab.0.left/0.25.1680.1025@0.25.1680.1025" timestamp="1632155242149" />
+    <state width="1638" height="281" key="GridCell.Tab.0.right" timestamp="1632155242150">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state width="1638" height="399" key="GridCell.Tab.0.right/0.25.1680.1025@0.25.1680.1025" timestamp="1622353317651" />
-    <state width="1878" height="656" key="GridCell.Tab.0.right/1680.25.1920.1055/0.25.1680.1025@1680.25.1920.1055" timestamp="1622302444904" />
-    <state x="0" y="25" width="1680" height="1025" key="Vcs.Push.Dialog.v2" timestamp="1624091072617">
+    <state width="1638" height="399" key="GridCell.Tab.0.right/0.25.1440.875/-556.-1055.1920.1055@-556.-1055.1920.1055" timestamp="1630234544160" />
+    <state width="1638" height="281" key="GridCell.Tab.0.right/0.25.1680.1025@0.25.1680.1025" timestamp="1632155242150" />
+    <state x="600" y="135" key="SettingsEditor" timestamp="1630772097919">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state x="0" y="25" width="1680" height="1025" key="Vcs.Push.Dialog.v2/0.25.1680.1025@0.25.1680.1025" timestamp="1624091072617" />
-    <state x="440" y="274" key="Vcs.Push.Dialog.v2/1680.25.1920.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1623465780516" />
-    <state x="547" y="252" width="670" height="657" key="search.everywhere.popup" timestamp="1623465633466">
+    <state x="600" y="135" key="SettingsEditor/0.25.1680.1025@0.25.1680.1025" timestamp="1630772097919" />
+    <state x="0" y="25" width="1680" height="1025" key="Vcs.Push.Dialog.v2" timestamp="1633197603536">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state x="547" y="252" width="670" height="657" key="search.everywhere.popup/0.25.1680.1025@0.25.1680.1025" timestamp="1622352664406" />
-    <state x="547" y="252" width="670" height="657" key="search.everywhere.popup/1680.25.1920.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1623465633466" />
-    <state x="2305" y="259" width="670" height="676" key="search.everywhere.popup/1680.25.1920.1055/0.25.1680.1025@1680.25.1920.1055" timestamp="1622302281937" />
+    <state x="0" y="25" width="1680" height="1025" key="Vcs.Push.Dialog.v2/0.25.1680.1025@0.25.1680.1025" timestamp="1633197603536" />
+    <state x="440" y="274" key="Vcs.Push.Dialog.v2/1680.25.1920.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1630817925958" />
+    <state x="547" y="252" width="670" height="657" key="search.everywhere.popup" timestamp="1632025296938">
+      <screen x="0" y="25" width="1680" height="1025" />
+    </state>
+    <state x="547" y="252" width="670" height="657" key="search.everywhere.popup/0.25.1680.1025@0.25.1680.1025" timestamp="1632025296938" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Jlab$test.coverage" NAME="test Coverage Results" MODIFIED="1622302444896" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Jlab$test.coverage" NAME="test Coverage Results" MODIFIED="1630164509330" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Jlab$.coverage" NAME="다음블로그추출 Coverage Results" MODIFIED="1622296382387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Jlab$test2.coverage" NAME="test2 Coverage Results" MODIFIED="1632027353993" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
