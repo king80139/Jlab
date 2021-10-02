@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="35facf2b-79a7-4daa-a3ad-11d04437c913" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/(SNA)전기차 블로그 카페 중복제거 오름차순정렬.csv.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/(SNA)전기차리뷰파일.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/~$JlabMiner library Backbone Dictionary.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/~$전기차리뷰파일.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/공빈도 정사각형 테스트.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/전기차리뷰파일.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/카페통합_light.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots.py" beforeDir="false" afterPath="$PROJECT_DIR$/plots.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test2.py" beforeDir="false" afterPath="$PROJECT_DIR$/test2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,12 +38,15 @@
   </component>
   <component name="JupyterTrust" id="534c1c79-6db5-49b3-bf02-0e7f17596daa" />
   <component name="ProjectId" id="1oQ57Bzkm1Wbbt1rmgaPGXopO7A" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -205,7 +217,11 @@
       <workItem from="1628929183840" duration="6024000" />
       <workItem from="1629597822884" duration="3361000" />
       <workItem from="1630162931781" duration="8853000" />
-      <workItem from="1630762624858" duration="4811000" />
+      <workItem from="1630762624858" duration="5460000" />
+      <workItem from="1632010563456" duration="132000" />
+      <workItem from="1632011679511" duration="547000" />
+      <workItem from="1632015348456" duration="5077000" />
+      <workItem from="1633187664623" duration="8481000" />
     </task>
     <task id="LOCAL-00001" summary="delete bps, modify some modules">
       <created>1615622566193</created>
@@ -284,74 +300,78 @@
       <option name="project" value="LOCAL" />
       <updated>1630768163490</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="bps added">
+      <created>1630817919022</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1630817919022</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="delete bps, modify some modules" />
     <MESSAGE value="Frequency_Analysis min_count" />
     <MESSAGE value="창민이것과 동기화작업" />
     <MESSAGE value="DSS, lemmatizing method modified" />
     <MESSAGE value="untokenizing in Lemmatization modified" />
     <MESSAGE value="input_directory optimized" />
-    <option name="LAST_COMMIT_MESSAGE" value="input_directory optimized" />
+    <MESSAGE value="bps added" />
+    <option name="LAST_COMMIT_MESSAGE" value="bps added" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="301" y="108" key="CommitChangelistDialog2" timestamp="1630768163307">
+    <state x="301" y="108" key="CommitChangelistDialog2" timestamp="1630817918929">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
     <state x="301" y="108" key="CommitChangelistDialog2/0.25.1680.1025@0.25.1680.1025" timestamp="1630763867200" />
-    <state x="301" y="108" key="CommitChangelistDialog2/1680.25.1920.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1630768163307" />
+    <state x="301" y="108" key="CommitChangelistDialog2/1680.25.1920.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1630817918929" />
     <state x="714" y="438" key="Github.ShareDialog" timestamp="1630763936624">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
     <state x="714" y="438" key="Github.ShareDialog/0.25.1680.1025@0.25.1680.1025" timestamp="1630763936624" />
-    <state width="1638" height="399" key="GridCell.Tab.0.bottom" timestamp="1630234544160">
-      <screen x="-556" y="-1055" width="1920" height="1055" />
+    <state width="1638" height="281" key="GridCell.Tab.0.bottom" timestamp="1632155242150">
+      <screen x="0" y="25" width="1680" height="1025" />
     </state>
     <state width="1638" height="399" key="GridCell.Tab.0.bottom/0.25.1440.875/-556.-1055.1920.1055@-556.-1055.1920.1055" timestamp="1630234544160" />
-    <state width="1638" height="399" key="GridCell.Tab.0.bottom/0.25.1680.1025@0.25.1680.1025" timestamp="1630206105985" />
-    <state width="1878" height="656" key="GridCell.Tab.0.bottom/1680.25.1920.1055/0.25.1680.1025@1680.25.1920.1055" timestamp="1622302444904" />
-    <state width="1638" height="399" key="GridCell.Tab.0.center" timestamp="1630234544160">
-      <screen x="-556" y="-1055" width="1920" height="1055" />
+    <state width="1638" height="281" key="GridCell.Tab.0.bottom/0.25.1680.1025@0.25.1680.1025" timestamp="1632155242150" />
+    <state width="1638" height="281" key="GridCell.Tab.0.center" timestamp="1632155242150">
+      <screen x="0" y="25" width="1680" height="1025" />
     </state>
     <state width="1638" height="399" key="GridCell.Tab.0.center/0.25.1440.875/-556.-1055.1920.1055@-556.-1055.1920.1055" timestamp="1630234544160" />
-    <state width="1638" height="399" key="GridCell.Tab.0.center/0.25.1680.1025@0.25.1680.1025" timestamp="1630206105984" />
-    <state width="1878" height="656" key="GridCell.Tab.0.center/1680.25.1920.1055/0.25.1680.1025@1680.25.1920.1055" timestamp="1622302444903" />
-    <state width="1638" height="399" key="GridCell.Tab.0.left" timestamp="1630234544159">
-      <screen x="-556" y="-1055" width="1920" height="1055" />
+    <state width="1638" height="281" key="GridCell.Tab.0.center/0.25.1680.1025@0.25.1680.1025" timestamp="1632155242150" />
+    <state width="1638" height="281" key="GridCell.Tab.0.left" timestamp="1632155242149">
+      <screen x="0" y="25" width="1680" height="1025" />
     </state>
     <state width="1638" height="399" key="GridCell.Tab.0.left/0.25.1440.875/-556.-1055.1920.1055@-556.-1055.1920.1055" timestamp="1630234544159" />
-    <state width="1638" height="399" key="GridCell.Tab.0.left/0.25.1680.1025@0.25.1680.1025" timestamp="1630206105984" />
-    <state width="1878" height="656" key="GridCell.Tab.0.left/1680.25.1920.1055/0.25.1680.1025@1680.25.1920.1055" timestamp="1622302444903" />
-    <state width="1638" height="399" key="GridCell.Tab.0.right" timestamp="1630234544160">
-      <screen x="-556" y="-1055" width="1920" height="1055" />
+    <state width="1638" height="281" key="GridCell.Tab.0.left/0.25.1680.1025@0.25.1680.1025" timestamp="1632155242149" />
+    <state width="1638" height="281" key="GridCell.Tab.0.right" timestamp="1632155242150">
+      <screen x="0" y="25" width="1680" height="1025" />
     </state>
     <state width="1638" height="399" key="GridCell.Tab.0.right/0.25.1440.875/-556.-1055.1920.1055@-556.-1055.1920.1055" timestamp="1630234544160" />
-    <state width="1638" height="399" key="GridCell.Tab.0.right/0.25.1680.1025@0.25.1680.1025" timestamp="1630206105985" />
-    <state width="1878" height="656" key="GridCell.Tab.0.right/1680.25.1920.1055/0.25.1680.1025@1680.25.1920.1055" timestamp="1622302444904" />
+    <state width="1638" height="281" key="GridCell.Tab.0.right/0.25.1680.1025@0.25.1680.1025" timestamp="1632155242150" />
     <state x="600" y="135" key="SettingsEditor" timestamp="1630772097919">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
     <state x="600" y="135" key="SettingsEditor/0.25.1680.1025@0.25.1680.1025" timestamp="1630772097919" />
-    <state x="0" y="25" width="1680" height="1025" key="Vcs.Push.Dialog.v2" timestamp="1630772154134">
+    <state x="440" y="274" width="1680" height="1025" key="Vcs.Push.Dialog.v2" timestamp="1630817925958">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
     <state x="0" y="25" width="1680" height="1025" key="Vcs.Push.Dialog.v2/0.25.1680.1025@0.25.1680.1025" timestamp="1630772154134" />
-    <state x="440" y="274" key="Vcs.Push.Dialog.v2/1680.25.1920.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1630768177174" />
-    <state x="547" y="252" width="670" height="657" key="search.everywhere.popup" timestamp="1630204188341">
+    <state x="440" y="274" key="Vcs.Push.Dialog.v2/1680.25.1920.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1630817925958" />
+    <state x="547" y="252" width="670" height="657" key="search.everywhere.popup" timestamp="1632025296938">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state x="547" y="252" width="670" height="657" key="search.everywhere.popup/0.25.1680.1025@0.25.1680.1025" timestamp="1630204188341" />
+    <state x="547" y="252" width="670" height="657" key="search.everywhere.popup/0.25.1680.1025@0.25.1680.1025" timestamp="1632025296938" />
     <state x="547" y="252" width="670" height="657" key="search.everywhere.popup/1680.25.1920.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1623465633466" />
-    <state x="2305" y="259" width="670" height="676" key="search.everywhere.popup/1680.25.1920.1055/0.25.1680.1025@1680.25.1920.1055" timestamp="1622302281937" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Jlab$test.coverage" NAME="test Coverage Results" MODIFIED="1630164509330" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Jlab$.coverage" NAME="다음블로그추출 Coverage Results" MODIFIED="1622296382387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Jlab$test2.coverage" NAME="test2 Coverage Results" MODIFIED="1630206105977" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Jlab$test2.coverage" NAME="test2 Coverage Results" MODIFIED="1632027353993" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
