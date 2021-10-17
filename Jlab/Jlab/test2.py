@@ -130,6 +130,7 @@ def SNA_3Gram(username, prname, isind = 0, min_thresh_rate = 0.01,  nodesize_var
         plt.savefig(f"{os.getcwd()}/{username}/{prname}/{output_}")
     else:
         plt.savefig(f"{os.getcwd()}/{username}/{prname}/{output_}.png")
+
     #plt.show()
 
 # print(input_)
