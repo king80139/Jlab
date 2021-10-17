@@ -1,5 +1,5 @@
 
-def SNA_3Gram(username, prname, isind = 0, min_thresh_rate = 0.01,  nodesize_var = 500, edgesize_var = 1000 , k=1, seed = 20):
+def SNA_3Gram(username, prname, isind = 0, min_thresh_rate = 0.01,  nodesize_var = 500, edgesize_var = 100 , k=30, seed = 20):
     from Jlab_Text_Cleaning_Functions import Frequency_Analysis
     import pandas as pd
     from utils import Read_Arg_, Read_Sheet_, option_finder, import_dataframe, export_dataframe
@@ -8,6 +8,7 @@ def SNA_3Gram(username, prname, isind = 0, min_thresh_rate = 0.01,  nodesize_var
     from itertools import product
     import platform
     import networkx as nx
+    import os
     from tqdm import tqdm
 
     plt.rcParams['axes.unicode_minus'] = False
@@ -47,6 +48,7 @@ def SNA_3Gram(username, prname, isind = 0, min_thresh_rate = 0.01,  nodesize_var
     Message_Df = import_dataframe(input_)
 
     Freq_df = Frequency_Analysis(Message_Df, prname)  # 검색어 포함 할 때
+    Freq_df = Freq_df[~Freq_df["tag"].str.contains("p1eriod|c1omma|P1eriod|C1omma|Q1uestion|S1lash|Q1uot|P1erc|D1ollar|H1ash|A1t|E1xc|C1aret|A1mp|A1st|P1arL|P1arR|B1raceL|B1raceR|B1racketL|B1racketR|D1ash|U1nderbar",na=False)]
     Freq_100 = Freq_df[Freq_df["count"] >= Freq_df["count"].max() * min_thresh_rate]  # 원래 ref라는 변수로 비율을 가져와야 하느데...
     #Freq_100_tag = list(Freq_100.tag)
 
@@ -65,7 +67,7 @@ def SNA_3Gram(username, prname, isind = 0, min_thresh_rate = 0.01,  nodesize_var
 
     for i in range(len(cooccur_list_1)):
         item = cooccur_list_1[i]
-        print(item)
+        #print(item)
         cooccur_subdict["level1_tag"] = item[0]
         cooccur_subdict["level1_count"] = tags_labeled[tags_labeled["tag"] == item[0]]["count"].values[0]
         cooccur_subdict["level1_type"] = tags_labeled[tags_labeled["tag"] == item[0]]["type"].values[0]
@@ -78,11 +80,11 @@ def SNA_3Gram(username, prname, isind = 0, min_thresh_rate = 0.01,  nodesize_var
         cooccur_subdict["level3_count"] = tags_labeled[tags_labeled["tag"] == item[2]]["count"].values[0]
         cooccur_subdict["level3_type"] = tags_labeled[tags_labeled["tag"] == item[2]]["type"].values[0]
         cooccur_subdict["level3_polarity"] = tags_labeled[tags_labeled["tag"] == item[2]]["valence"].values[0]
-        cooccur_subdict["level1&2_cooccurence"] = len(Message_Df[Message_Df["contents"].str.contains("&".join([item[0], item[1]]), na = False)])
-        cooccur_subdict["level1&2&3_cooccurence"] = len(Message_Df[Message_Df["contents"].str.contains("&".join([item[0], item[1], item[2]]), na = False)])
+        cooccur_subdict["level1&2_cooccurence"] = len(Message_Df[Message_Df["contents"].str.contains(item[0], na = False)][Message_Df["contents"].str.contains(item[1], na = False)])
+        cooccur_subdict["level1&2&3_cooccurence"] = len(Message_Df[Message_Df["contents"].str.contains(item[0], na = False)][Message_Df["contents"].str.contains(item[1], na = False)][Message_Df["contents"].str.contains(item[2], na = False)])
         cooccur_dict[f"combi_{i+1}"] = cooccur_subdict
         cooccur_subdict = {}
-        print(cooccur_dict)
+
 
     graph = nx.Graph()
     nodes = []
@@ -113,8 +115,8 @@ def SNA_3Gram(username, prname, isind = 0, min_thresh_rate = 0.01,  nodesize_var
     )
 
     nx.draw_networkx_edges(
-        graph, pos, edge_color='black', arrows=True, alpha=.6,
-        width=[e[2]['weight']*edgesize_var for e in graph.edges(data=True)]
+        graph, pos, edge_color='black', arrows=True, alpha=.8,
+        width=[e[2]['weight']*(1/edgesize_var) for e in graph.edges(data=True)]
     )
 
     nx.draw_networkx_labels(
@@ -123,12 +125,12 @@ def SNA_3Gram(username, prname, isind = 0, min_thresh_rate = 0.01,  nodesize_var
 
 
     plt.axis('off')  # x y 축 숫자 제거
-    if ".jpg" in output_ or ".png" in output_ or ".jpeg" in output_:
-        plt.savefig(f"{output_}")
-    else:
-        plt.savefig(f"{output_}.png")
-    plt.show()
 
+    if ".jpg" in output_ or ".png" in output_ or ".jpeg" in output_:
+        plt.savefig(f"{os.getcwd()}/{username}/{prname}/{output_}")
+    else:
+        plt.savefig(f"{os.getcwd()}/{username}/{prname}/{output_}.png")
+    #plt.show()
 
 # print(input_)
 # print(output_)

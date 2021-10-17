@@ -6,8 +6,11 @@ def Delete_Messages(username, prname):
     # .apply메소드를 통해 제거합니다.
     import os, re
     from tqdm import tqdm
-    from .utils import Read_Arg_, Read_Sheet_, import_dataframe, export_dataframe
-    input_directory = "/".join([username, prname])  #Non-창민버전
+    from utils import Read_Arg_, Read_Sheet_, import_dataframe, export_dataframe
+    if (username is None) or (prname is None):
+        input_directory = ""
+    else:
+        input_directory = "/".join([username, prname])  # Non-창민버전
     tqdm.pandas()
 
     ref, input_, output_ = Read_Arg_(username,prname,"Delete_Messages")
@@ -29,6 +32,7 @@ def Delete_Messages(username, prname):
     output_name = os.path.join(input_directory, output_)
     export_dataframe(input_Message, output_name)
 
+    print("Spam Messages Deleted")
     return input_Message
 
 ########################################################################################################################
@@ -36,14 +40,17 @@ def Delete_Messages(username, prname):
 def Delete_Overlapped_Messages(username, prname):  # 중복메세지를 제거하는 함수입니다.
     import os
     from tqdm import tqdm
-    from .utils import Read_Arg_, import_dataframe, export_dataframe
+    from utils import Read_Arg_, import_dataframe, export_dataframe
     tqdm.pandas()
 
     ref, input_, output_ = Read_Arg_(username,prname,"Delete_Overlapped_Messages")  # Read_Arg를 통해 참조파일, input파일, output파일을 불러옵니다.
     # 이 때 ref는 Overlapped여부를 판가름하는 문자열의 길이,
     # input파일은 메세지 csv파일의 이름,
     # output은 처리 후 내보낼 메세지 csv파일의 이름입니다.
-    input_directory = "/".join([username, prname])  #Non-창민버 전
+    if (username is None) or (prname is None):
+        input_directory = ""
+    else:
+        input_directory = "/".join([username, prname])  # Non-창민버전
 
     input_name = os.path.join(input_directory, input_)
     input_Message = import_dataframe(input_name)
@@ -70,6 +77,7 @@ def Delete_Overlapped_Messages(username, prname):  # 중복메세지를 제거�
 
     output_name = os.path.join(input_directory, output_)
     export_dataframe(input_Message, output_name)  # 설정한 input_directory에 output 파일을 저장하고
+    print("Overlapped Messages Deleted")
 
     return input_Message  # 이 함수의 리턴값으로 처리된 input_Message를 내보냅니다. (DataFrame형식)
 
@@ -83,7 +91,7 @@ def Delete_StandardStopwords(username, prname):  # 1차 불용어 처리 (불용
     kp = KeywordProcessor()
     tqdm.pandas()
 
-    if (username == "") & (prname == ""):
+    if (username is None) & (prname is None):
         input_directory = ""  # Non-창민버전
     else:
         input_directory = "/".join([username, prname])  # Non-창민버전
@@ -109,7 +117,7 @@ def Delete_StandardStopwords(username, prname):  # 1차 불용어 처리 (불용
 
     Sym2Remain_np = Sym2Remain.fillna("").to_numpy(dtype=list)
     all_V = list(map(lambda x: [i for i in x if i != ""], Sym2Remain_np))  # all_V라는 변수에 lemma에 있는 데이터들을 전부 가져옵니다.
-    print(all_V)
+    #print(all_V)
     # 이 때 all_V의 형태는 다음과 같습니다.
     # [[기준단어 a, 변형단어 a-1, 변형단어 a-2,... ],
     #  [기준단어 b, 변형단어 b-1, 변형단어 b-2,... ],
@@ -210,6 +218,7 @@ def Delete_StandardStopwords(username, prname):  # 1차 불용어 처리 (불용
 
     output_name = os.path.join(input_directory, output_)
     export_dataframe(input_Message, output_name)
+    print("Standard Stopwords Deleted")
 
     return input_Message  # Delete_Characters의 리턴값으로 최신화된 데이터프레임으로 내보내도록 합니다.
 
@@ -337,6 +346,7 @@ def Replace_Texts_in_Messages(username, prname):  # 1차 Lemmatization 함수
 
     output_name = os.path.join(input_directory, output_)
     export_dataframe(input_Message, output_name)
+    print("Lemmatization Completed")
 
     return input_Message  # 처리한 input_Message를 리턴값으로 내보냅니다.
 

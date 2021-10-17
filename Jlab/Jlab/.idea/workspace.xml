@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="35facf2b-79a7-4daa-a3ad-11d04437c913" name="Default Changelist" comment="" />
+    <list default="true" id="35facf2b-79a7-4daa-a3ad-11d04437c913" name="Default Changelist" comment="pull함">
+      <change afterPath="$PROJECT_DIR$/(DOM)전기차리뷰파일.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/(DSS)전기차리뷰파일.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/(LEM)전기차리뷰파일.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/(SPAM)전기차리뷰파일.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/(SNA)전기차리뷰파일.png" beforeDir="false" afterPath="$PROJECT_DIR$/(SNA)전기차리뷰파일.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jlab_Text_Cleaning_Functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Jlab_Text_Cleaning_Functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots.py" beforeDir="false" afterPath="$PROJECT_DIR$/plots.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test2.py" beforeDir="false" afterPath="$PROJECT_DIR$/test2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/~$JlabMiner library Backbone Dictionary.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/~$전기차리뷰파일.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/전기차리뷰파일.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/전기차리뷰파일.xlsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -211,6 +224,7 @@
       <workItem from="1632011679511" duration="547000" />
       <workItem from="1632015348456" duration="5077000" />
       <workItem from="1633187664623" duration="8481000" />
+      <workItem from="1634439951669" duration="5835000" />
     </task>
     <task id="LOCAL-00001" summary="delete bps, modify some modules">
       <created>1615622566193</created>
@@ -303,7 +317,14 @@
       <option name="project" value="LOCAL" />
       <updated>1633197777836</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="pull함">
+      <created>1633198005269</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1633198005269</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,13 +340,15 @@
     <MESSAGE value="input_directory optimized" />
     <MESSAGE value="bps added" />
     <MESSAGE value="SHH repo와 연동" />
-    <option name="LAST_COMMIT_MESSAGE" value="SHH repo와 연동" />
+    <MESSAGE value="pull함" />
+    <option name="LAST_COMMIT_MESSAGE" value="pull함" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="301" y="108" key="CommitChangelistDialog2" timestamp="1633197777665">
-      <screen x="0" y="25" width="1680" height="1025" />
+    <state x="539" y="207" key="CommitChangelistDialog2" timestamp="1634447222832">
+      <screen x="0" y="25" width="1920" height="1055" />
     </state>
-    <state x="301" y="108" key="CommitChangelistDialog2/0.25.1680.1025@0.25.1680.1025" timestamp="1633197777665" />
+    <state x="301" y="108" key="CommitChangelistDialog2/0.25.1680.1025@0.25.1680.1025" timestamp="1633198005158" />
+    <state x="539" y="207" key="CommitChangelistDialog2/0.25.1920.1055@0.25.1920.1055" timestamp="1634447222832" />
     <state x="301" y="108" key="CommitChangelistDialog2/1680.25.1920.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1630817918929" />
     <state x="714" y="438" key="Github.ShareDialog" timestamp="1630763936624">
       <screen x="0" y="25" width="1680" height="1025" />
@@ -355,15 +378,19 @@
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
     <state x="600" y="135" key="SettingsEditor/0.25.1680.1025@0.25.1680.1025" timestamp="1630772097919" />
-    <state x="0" y="25" width="1680" height="1025" key="Vcs.Push.Dialog.v2" timestamp="1633197786723">
+    <state x="0" y="25" width="1680" height="1025" key="Vcs.Push.Dialog.v2" timestamp="1633198392825">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state x="0" y="25" width="1680" height="1025" key="Vcs.Push.Dialog.v2/0.25.1680.1025@0.25.1680.1025" timestamp="1633197786723" />
+    <state x="0" y="25" width="1680" height="1025" key="Vcs.Push.Dialog.v2/0.25.1680.1025@0.25.1680.1025" timestamp="1633198392825" />
     <state x="440" y="274" key="Vcs.Push.Dialog.v2/1680.25.1920.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1630817925958" />
-    <state x="641" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1633197969471">
+    <state x="641" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1633198355909">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state x="641" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.25.1680.1025@0.25.1680.1025" timestamp="1633197969471" />
+    <state x="641" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.25.1680.1025@0.25.1680.1025" timestamp="1633198355909" />
+    <state x="635" y="420" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1633198209371">
+      <screen x="0" y="25" width="1680" height="1025" />
+    </state>
+    <state x="635" y="420" key="git4idea.remote.GitConfigureRemotesDialog/0.25.1680.1025@0.25.1680.1025" timestamp="1633198209371" />
     <state x="547" y="252" width="670" height="657" key="search.everywhere.popup" timestamp="1632025296938">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>

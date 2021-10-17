@@ -441,7 +441,7 @@ def draw_subjDesc_plot(username, prname):
     return coo
 
 
-def SNA_3Gram(username, prname, isind=0, min_thresh_rate=0.01, nodesize_var=500, edgesize_var=1000, k=1, seed=20):
+def SNA_3Gram(username, prname, isind=0, min_thresh_rate=0.005, nodesize_var=500, edgesize_var=1000, k=1, seed=20):
     from Jlab_Text_Cleaning_Functions import Frequency_Analysis
     import pandas as pd
     from utils import Read_Arg_, Read_Sheet_, option_finder, import_dataframe, export_dataframe
